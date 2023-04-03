@@ -1,0 +1,24 @@
+<div class="title">
+  <h1>Upcoming Events</h1>
+</div>
+<div class="events row">
+
+  <% events.forEach(function(event){%>
+  <% if (event.display == "TRUE") { %>
+  <div class="col-lg-4 col-md-6 col-6">
+    <form action="/event-register:<%=event.name%>" method="get">
+      <div class="card">
+        <img src="https://drive.google.com/uc?export=view&id=<%=event.image%>" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h6 class="date"><%=event.date%></h6>
+          <h4 class="name"><%=event.name%></h4>
+          <h4 class="price"><%=event.cost%> HKD</h4>
+          <button type="submit" class="btn signupButton">Sign up</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <% } %>
+  <%   })%>
+
+</div>

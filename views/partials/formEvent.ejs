@@ -1,0 +1,208 @@
+<div class="card card-form">
+  <center>
+    <h1><%= eventDetails.name %></h1>
+  </center>
+  <p class="formDescription">📍 <%= eventDetails.location %></p>
+  <p class="formDescription">🗓 <%= eventDetails.date %></p>
+  <p class="formDescription">💵 <%= eventDetails.cost %> HKD</p>
+  <p class="formDescription"><%= eventDetails.description %></p>
+  <div class="content" id="afterSubmitText">
+  <h2 class="text_shadows afterSubmitText">Thank you for joining our community!</h2>
+</div>
+  <div class="card-body" id="formBody">
+    <div class="formContainer">
+      <form name="participants" id="formParticipants">
+        <div class="firstStep" id="firstStep">
+          <p class="formQuestion">Name:</p>
+          <input class="formTextInput" type="text" id="name" name="name" value="" placeholder="Enter your name" required>
+          <p class="formQuestion">Email:</p>
+          <input class="formTextInput" type="email" id="email" name="email" value="" placeholder="Enter your email" required>
+          <p class="formQuestion">University:</p>
+          <input class="formTextInput" type="text" id="university" name="university" value="" placeholder="Enter your university" required>
+          <p class="formQuestion">WhatsApp Number: </p>
+          <h6 class="formNotes">Please follow this format: e.g. + 852 xxxxxxx</h6>
+          <input class="formTextInput" type="text" id="phoneNumber" name="whatsapp_number" value="" placeholder="Enter your WhatsApp Number" required>
+          <p class="formQuestion">Healthy Snacks:</p>
+          <p class="formQuestion">We offer a healthy snack bag for an add-on of 55HKD that has the following:</p>
+          <p class="formNotes">1. Grapes x 250-300 g</p>
+          <p class="formNotes">2. Apples x 2</p>
+          <p class="formNotes">3. Oranges x 1</p>
+          <p class="formNotes">4. Banana x 1</p>
+          <p class="formNotes">5. Water bottle (1.5 Liter)</p>
+          <input id="snacks" class="formCheckBoxInput" type="checkbox" value="">Healthy Snacks</input>
+          <p class="formQuestion">Payment Method:</p>
+          <select class="dropdown" name="payment_method" id="paymentMethod" required>
+            <option value="FPS/PayMe">FPS/PayMe</option>
+            <option value="Cash">Cash</option>
+          </select>
+          <div id="invalidForm" class="invalidForm">
+            <p class="formDescription invalidFormText">Please fill in the necessay information</p>
+          </div>
+          <button class="btn btn_get btn_get_two next-step" type="button" onClick="checkOut()">Check Out</button>
+        </div>
+        <div class="secondStep" id="secondStep">
+          <p class="formQuestion" id="total"></p>
+          <div id="fpsPayment" class="fpsPayment">
+            <p class="formNotes">FPS ID/PayMe: +852 6535 7490</p>
+            <p class="formNotes">Recipient Name: Alaa Z A Abukmeil</p>
+            <div class="fpsRadioBox">
+              <input type="radio" id="fpsConfirmationInput" name="" value="" required></input>
+              <p id="fpsConfirmation" class="fpsConfirmation"></p>
+            </div>
+          </div>
+          <div id="cashPayment" class="cashPayment">
+            <p class="formQuestion">Please select one of the following timeslots to pay cash at:</p>
+            <select class="dropdown" name="timeslot" required>
+              <% (eventDetails.timeslots.split(",")).forEach(function(timeslot){ %>
+              <option><%=timeslot %></option>
+              <% })%>
+            </select>
+          </div>
+          <div class="terms-conditions">
+            <input type="radio" name="" value="" id="termsConditionsInput" required></input>
+            <p id="termsConditions">I agree to LesGo Epic's <a href="termsConditions">terms and conditions.</a></p>
+          </div>
+          <div id="incompleteText" class="incompleteText">
+            <p>Please fill in the necessay information</p>
+          </div>
+          <div class="buttons">
+            <button class="btn btn_get btn_get_two previousButton" type="button" id="previousButton" onClick="previous()">Previous</button>
+            <button class="btn btn_get btn_get_two submitFormButton" type="submit" id="submitFormButton" onClick="submitForm()">Submit!</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+<script type="text/javascript">
+  let snacksGoogleSheet;
+  let totalGoogleSheet;
+
+  function checkOut() {
+    let name = document.getElementById("name").value
+    let email = document.getElementById("email").value
+    let university = document.getElementById("university").value
+    let phoneNumber = document.getElementById("phoneNumber").value
+    let formInvalidText = document.getElementById("invalidForm")
+    if (name == "" || email == "" || university == "" || phoneNumber == "") {
+      formInvalidText.style.display = "block"
+    } else {
+      formInvalidText.style.display = "none"
+      let initialPrice = parseInt( <%= eventDetails.cost %> )
+      let total = document.getElementById("total")
+      let snacks = document.getElementById("snacks").checked
+      if (snacks) {
+        snacksGoogleSheet = "Yes"
+        initialPrice += 55
+        total.innerHTML = "Your total summary is " + initialPrice + " HKD"
+      } else {
+        snacksGoogleSheet = "No"
+        total.innerHTML = "Your total summary is " + initialPrice + " HKD"
+      }
+      totalGoogleSheet = initialPrice
+      let paymentMethod = document.getElementById("paymentMethod").value
+      let cashInput = document.getElementById("cashPayment")
+      let fpsInput = document.getElementById("fpsPayment")
+      let fpsConfirmation = document.getElementById("fpsConfirmation")
+      if (paymentMethod == "FPS/PayMe") {
+        cashInput.style.display = "none"
+        fpsConfirmation.innerHTML = "I confirm that I have completed the payment of " + initialPrice + " HKD via FPS/PayMe."
+      } else if (paymentMethod == "Cash") {
+        fpsInput.style.display = "none"
+      }
+      let firstStep = document.getElementById("firstStep")
+      let secondStep = document.getElementById("secondStep")
+      secondStep.style.display = "block"
+      firstStep.style.display = "none"
+    }
+  }
+
+  function previous() {
+    let cashInput = document.getElementById("cashPayment")
+    let fpsInput = document.getElementById("fpsPayment")
+    let formInvalidText = document.getElementById("invalidForm")
+    let firstStep = document.getElementById("firstStep")
+    let secondStep = document.getElementById("secondStep")
+    let incompleteText = document.getElementById("incompleteText")
+    cashInput.style.display = "block"
+    fpsInput.style.display = "block"
+    formInvalidText.style.display = "none"
+    secondStep.style.display = "none"
+    firstStep.style.display = "block"
+    incompleteText.style.display = "none"
+  }
+
+  function submitForm() {
+    showIncompleteForm()
+    if (confirmTermsPayment()) {
+      const scriptURL = "https://script.google.com/macros/s/AKfycbyE9-co11N70j_73xtxT_oOZnJGHyDLf50ljt2LIocjiqmP70TcET22mqeYOthQfj_n/exec"
+      const form = document.forms['participants']
+      const formData = new FormData(form)
+      formData.append("event-name", "<%= eventDetails.name %>");
+      formData.append("event-cost", "<%= eventDetails.cost %>");
+      formData.append("event-date", "<%= eventDetails.date %>");
+      formData.append("snacks", snacksGoogleSheet);
+      formData.append("total", totalGoogleSheet);
+      form.addEventListener('submit', e => {
+        document.getElementById("submitFormButton").disabled = true
+        document.getElementById("previousButton").disabled = true
+        e.preventDefault()
+        fetch(scriptURL, {
+            method: 'POST',
+            body: formData
+          })
+          .then(response => console.log("success"))
+          .catch(error => console.log("error"))
+      })
+      let afterSubmitText = document.getElementById("afterSubmitText")
+      afterSubmitText.style.display = "block"
+      let formBody = document.getElementById("formBody")
+      formBody.style.display = "none"
+    } else {
+      let initialForm = document.forms['participants']
+      initialForm.addEventListener('submit', e => {
+        e.preventDefault()
+      })
+    }
+  }
+
+  function confirmTermsPayment() {
+    let paymentMethod = document.getElementById("paymentMethod").value
+    let fpsConfirmationInput = document.getElementById("fpsConfirmationInput").checked
+    let incompleteText = document.getElementById("incompleteText")
+    let termsConditionsInput = document.getElementById("termsConditionsInput").checked
+    if (!termsConditionsInput) {
+      incompleteText.style.display = "block"
+    } else if (paymentMethod == "FPS/PayMe") {
+      if (!fpsConfirmationInput) {
+        return false
+      } else {
+        return true
+      }
+    } else {
+      return true
+    }
+  }
+
+  function showIncompleteForm() {
+    let paymentMethod = document.getElementById("paymentMethod").value
+    let fpsConfirmationInput = document.getElementById("fpsConfirmationInput").checked
+    let incompleteText = document.getElementById("incompleteText")
+    let termsConditionsInput = document.getElementById("termsConditionsInput").checked
+    if (!termsConditionsInput) {
+      incompleteText.style.display = "block"
+    } else if (paymentMethod == "FPS/PayMe") {
+      if (!fpsConfirmationInput) {
+        incompleteText.style.display = "block"
+      } else {
+        incompleteText.style.display = "none"
+      }
+    } else {
+      incompleteText.style.display = "none"
+    }
+
+  }
+  function afterSubmit(){
+
+  }
+</script>

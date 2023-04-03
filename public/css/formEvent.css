@@ -1,0 +1,361 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Roboto+Slab&display=swap');
+
+.formContainer {
+  display: block;
+}
+
+.formContainer p {
+  margin: 10px 0px;
+}
+
+.card-form {
+  width: 700px;
+  display: block;
+  margin: auto;
+  padding: 10px;
+  background-color: #EBDEF0;
+}
+
+.formTextInput {
+  border-radius: 6px;
+  border: 0px;
+  padding: 5px;
+  width: 90%;
+  font-family: 'Roboto Slab', serif;
+}
+
+.formNotes {
+  margin-top: -5px;
+  font-family: 'Roboto Slab', serif;
+}
+
+.formDescription {
+  margin: 5px;
+  text-align: justify;
+  font-weight: 600;
+  font-family: 'Roboto Slab', serif;
+}
+
+.buttons {
+  display: flex;
+  margin-top: 10px;
+  margin-left: auto;
+  font-family: 'Roboto Slab', serif;
+  justify-content: right
+}
+
+.next-step {
+  display: block;
+  margin-top: 10px;
+  margin-left: auto;
+  font-family: 'Roboto Slab', serif;
+}
+
+.formQuestion {
+  font-weight: 600;
+  font-family: 'Roboto Slab', serif;
+}
+
+.formCheckBoxInput {
+  margin-right: 10px;
+  font-family: 'Roboto Slab', serif;
+}
+
+.firstStep {
+  font-family: 'Roboto Slab', serif;
+}
+
+.dropdown {
+  border-radius: 6px;
+  border: 0px;
+  padding: 5px;
+  width: 90%;
+  font-weight: 500;
+  font-family: 'Roboto Slab', serif;
+}
+
+.fpsPhotoUpload {
+  border-radius: 6px;
+  border: 0px;
+  padding: 5px;
+  width: 90%;
+  font-weight: 500;
+  font-family: 'Roboto Slab', serif;
+}
+
+.secondStep {
+  display: none;
+}
+
+.terms-conditions {
+  display: flex;
+}
+
+.terms-conditions p {
+  margin-left: 10px;
+  text-align: justify;
+  font-weight: 600;
+  font-family: 'Roboto Slab', serif;
+}
+
+.drop-container {
+  position: relative;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 200px;
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px dashed #555;
+  color: #444;
+  cursor: pointer;
+  transition: background .2s ease-in-out, border .2s ease-in-out;
+  font-family: 'Roboto Slab', serif;
+}
+
+.previousButton {
+  background-color: #EBDEF0;
+  color: black;
+  border: 0px;
+  margin-right: 10px
+}
+
+.drop-container:hover {
+  background: #eee;
+  border-color: #111;
+}
+
+.drop-container:hover .drop-title {
+  color: #222;
+}
+
+.drop-title {
+  color: #444;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  transition: color .2s ease-in-out;
+  font-family: 'Roboto Slab', serif;
+}
+
+.invalidFormText {
+  color: red;
+  text-align: center
+}
+
+.invalidForm {
+  display: none;
+  width: 100%
+}
+
+.fpsRadioBox {
+  display: flex;
+}
+
+.fpsRadioBox input {
+  margin-right: 10px
+}
+
+.fpsConfirmation {
+  margin-left: 10px;
+  text-align: justify;
+  font-weight: 600;
+  font-family: 'Roboto Slab', serif;
+}
+
+.incompleteText {
+  color: red;
+  text-align: center;
+  width: 100%;
+  font-weight: 600;
+  font-family: 'Roboto Slab', serif;
+  display: none;
+}
+
+@media only screen and (max-width: 800px) {
+  .card-form {
+    width: 90%;
+    display: block;
+    margin: auto
+  }
+
+  .fpsConfirmation {
+    font-size: 12px
+  }
+}
+
+.content {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.text_shadows {
+  text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary), 12px 12px 0 var(--color-quinary);
+  /* font-family: bungee, sans-serif; */
+  font-weight: 400;
+  text-transform: uppercase;
+  /* font-size: calc(2rem + 5vw); */
+  text-align: center;
+  /* margin: 0; */
+  color: var(--color-primary);
+  -webkit-animation: shadows 1.2s ease-in infinite, move 1.2s ease-in infinite;
+  animation: shadows 1.2s ease-in infinite, move 1.2s ease-in infinite;
+  letter-spacing: 0.4rem;
+}
+
+@-webkit-keyframes shadows {
+  0% {
+    text-shadow: none;
+  }
+
+  10% {
+    text-shadow: 3px 3px 0 var(--color-secondary);
+  }
+
+  20% {
+    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary);
+  }
+
+  30% {
+    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary);
+  }
+
+  40% {
+    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary), 12px 12px 0 var(--color-quinary);
+  }
+
+  50% {
+    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary), 12px 12px 0 var(--color-quinary);
+  }
+
+  60% {
+    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary), 12px 12px 0 var(--color-quinary);
+  }
+
+  70% {
+    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary);
+  }
+
+  80% {
+    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary);
+  }
+
+  90% {
+    text-shadow: 3px 3px 0 var(--color-secondary);
+  }
+
+  100% {
+    text-shadow: none;
+  }
+}
+
+@keyframes shadows {
+  0% {
+    text-shadow: none;
+  }
+
+  10% {
+    text-shadow: 3px 3px 0 var(--color-secondary);
+  }
+
+  20% {
+    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary);
+  }
+
+  30% {
+    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary);
+  }
+
+  40% {
+    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary), 12px 12px 0 var(--color-quinary);
+  }
+
+  50% {
+    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary), 12px 12px 0 var(--color-quinary);
+  }
+
+  60% {
+    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary), 12px 12px 0 var(--color-quinary);
+  }
+
+  70% {
+    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary), 9px 9px var(--color-quaternary);
+  }
+
+  80% {
+    text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary);
+  }
+
+  90% {
+    text-shadow: 3px 3px 0 var(--color-secondary);
+  }
+
+  100% {
+    text-shadow: none;
+  }
+}
+
+@-webkit-keyframes move {
+  0% {
+    transform: translate(0px, 0px);
+  }
+
+  40% {
+    transform: translate(-12px, -12px);
+  }
+
+  50% {
+    transform: translate(-12px, -12px);
+  }
+
+  60% {
+    transform: translate(-12px, -12px);
+  }
+
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+@keyframes move {
+  0% {
+    transform: translate(0px, 0px);
+  }
+
+  40% {
+    transform: translate(-12px, -12px);
+  }
+
+  50% {
+    transform: translate(-12px, -12px);
+  }
+
+  60% {
+    transform: translate(-12px, -12px);
+  }
+
+  100% {
+    transform: translate(0px, 0px);
+  }
+}
+
+#afterSubmitText {
+  display: none;
+  text-align: center;
+  font-size: 15px;
+  font-family: 'Roboto Slab', serif;
+}
+
+.afterSubmitText {
+  text-align: center;
+  font-size: 15px;
+  font-family: 'Roboto Slab', serif;
+  font-weight: 600
+}
+
+.text_shadows {
+  margin-top: 50px;
+}

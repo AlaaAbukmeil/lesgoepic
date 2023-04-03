@@ -1,0 +1,46 @@
+.signupButton{
+  background-color: #581845;
+  color: white;
+}
+.signupButton:hover {
+  background-color: #9C317C;
+
+}
+h6{
+  font-size: 12px;
+}
+h4{
+  font-size: 16px;
+}
+.card{
+  width: 100%;
+  margin-top: 10px;
+}
+h1{
+  font-size: 45px;
+  font-weight: 500;
+}
+.subscribeButton{
+
+}
+.container-button{
+  width: 100%;
+  margin: 0px auto;
+  text-align: center
+}
+
+
+@media only screen and (max-width: 600px) {
+  h1{
+  font-size: 20px;
+  }
+  h4{
+    font-size: 10px;
+  }
+  h6{
+    font-size: 10px;
+  }
+  .signupButton{
+      font-size: 8px;
+  }
+}
