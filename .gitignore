@@ -129,5 +129,5 @@ dist
 .yarn/install-state.gz
 .pnp.*
 /nbproject/private/
-lesgoepicadmin-da3eee086dc5
+/src/lesgoepicadmin-da3eee086dc5.json
 unusedcode
