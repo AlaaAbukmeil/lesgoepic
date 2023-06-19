@@ -3,8 +3,8 @@ import { Request, Response, NextFunction } from "express"
 import {
     fetchEvents, fetchAlbums,
     registerParticipant, getEventInfo,
-    fetchPosts, getScheduleInfo
-} from "../controllers/adminData"
+    fetchPosts, getScheduleInfo,
+    getPostInfo} from "../controllers/adminData"
 import { image } from "../models/image";
 import { eventInfo } from "../models/eventInfo";
 import { albumInfo } from "../models/albumInfo";
@@ -78,9 +78,9 @@ router.get("/.well-known/assetlinks.json", function (req: Request, res: Response
     res.sendFile(path.normalize(__dirname + '/assetslink.json'))
 });
 
-router.get("/myAccount", function (req: Request, res: Response): void {
-    res.render("myAccount")
-});
+// router.get("/myAccount", function (req: Request, res: Response): void {
+//     res.render("myAccount")
+// });
 
 
 router.get("/register:eventId", async function (req: Request, res: Response, next: NextFunction): Promise<void> {
@@ -95,6 +95,14 @@ router.get("/register:eventId", async function (req: Request, res: Response, nex
     }
 });
 
+router.get("/post:postId", async function (req: Request, res: Response, next: NextFunction): Promise<void> {
+    let postId : string = req.params.postId.replace(":", "")
+    let post: postInfo = await getPostInfo(postId)
+    res.render("post", {
+        postInfo: post
+    })
+});
+
 router.post("/register:eventId", uploadScreenshot.any(), async function (req: Request | any, res: Response, next: NextFunction): Promise<void> {
     let eventId: string = req.params.eventId.replace(":", "")
     let eventInfo: eventInfo = await getEventInfo(eventId)
@@ -107,7 +115,7 @@ router.post("/register:eventId", uploadScreenshot.any(), async function (req: Re
     }
     if (!req.files[0]) {
         registerParticipant(eventInfo, response)
-        console.log(response)
+        // console.log(response)
         res.redirect("/?registered=true")
 
     } else {
@@ -118,5 +126,6 @@ router.post("/register:eventId", uploadScreenshot.any(), async function (req: Re
     }
 }
 );
+
 
 export default router; 

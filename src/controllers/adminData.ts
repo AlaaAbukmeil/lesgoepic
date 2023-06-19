@@ -7,6 +7,7 @@ import { scheduleInfo } from "../models/scheduleInfo";
 require("dotenv").config()
 const mongoose = require('mongoose');
 const ObjectId = require('mongodb').ObjectId;
+
 const {
   MongoClient,
   ServerApiVersion
@@ -35,7 +36,7 @@ export async function fetchEvents(): Promise<eventInfo[]> {
         order: 1
       }
     };
-    const events = await eventsCollection.find(query, options)
+    const events: eventInfo[] = await eventsCollection.find(query, options)
     let eventsJson = []
     for await (const doc of events) {
       eventsJson.push(doc)
@@ -54,7 +55,7 @@ export async function fetchAlbums(): Promise<albumInfo[]> {
     const albums = await albumsCollection.find().sort({
       order: -1
     })
-    let albumsJson = []
+    let albumsJson: albumInfo[] = []
     for await (const doc of albums) {
       albumsJson.push(doc)
     }
@@ -73,7 +74,7 @@ export async function getEventInfo(id: string): Promise<eventInfo> {
     const query = {
       _id: new ObjectId(id)
     };
-    const eventInfo = await eventCollection.findOne(query)
+    const eventInfo: eventInfo = await eventCollection.findOne(query)
 
     return eventInfo
   } finally {
@@ -92,7 +93,7 @@ export async function registerParticipant(eventInfo: eventInfo, info: AnyObject)
   response["eventCost"] = eventInfo["cost"]
   response["submissionTime"] = new Date()
 
-  console.log(info)
+  // console.log(info)
   const updateDoc = {
     ...response, ...info
   }
@@ -101,14 +102,14 @@ export async function registerParticipant(eventInfo: eventInfo, info: AnyObject)
 }
 
 export async function fetchPosts(): Promise<postInfo[]> {
-  
+
   try {
     const database = client.db("blog");
     const postsCollection = database.collection("posts");
     const posts = await postsCollection.find().sort({
       order: -1
     })
-    let postsJson = []
+    let postsJson: postInfo[] = []
     for await (const doc of posts) {
       postsJson.push(doc)
     }
@@ -135,3 +136,22 @@ export async function getScheduleInfo(): Promise<scheduleInfo> {
     // await client.close();
   }
 }
+
+export async function getPostInfo(id: string): Promise<postInfo> {
+  try {
+    const database = client.db("blog");
+    const postCollection = database.collection("posts");
+    const query = {
+      _id: new ObjectId(id)
+    };
+    const postInfo: postInfo = await postCollection.findOne(query)
+
+    return postInfo
+  } finally {
+    // Ensures that the client will close when you finish/error
+    // await client.close();
+  }
+}
+
+
+
