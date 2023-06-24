@@ -7,8 +7,8 @@
     "start": "nodemon dist/server.js",
     "gcp-build": "tsc -p ."
   },
-  "author": "",
-  "license": "ISC",
+  "author": "<abukmeilalaa@gmail.com>",
+  "license": "MIT",
   "dependencies": {
     "alert": "^5.1.4",
     "axios": "^1.4.0",
@@ -28,9 +28,9 @@
     "multer-google-storage": "^1.3.0",
     "node-localstorage": "^2.2.1",
     "nodemon": "^2.0.22",
-    "parser": "^0.1.4",
     "path": "^0.12.7",
     "popups": "^1.1.3",
     "typescript": "^5.0.4"
-  }
+  },
+  "repository": "https://github.com/AlaaAbukmeil/lesgoepic.git"
 }
