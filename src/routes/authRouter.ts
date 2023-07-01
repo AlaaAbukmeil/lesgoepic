@@ -1,4 +1,4 @@
-import { signUpUser, logInUser } from "../controllers/fireBaseAuth";
+import { signUpUser, logInUser, logOutUser } from "../controllers/fireBaseAuth";
 import { Router } from "express";
 import { Request, Response, NextFunction } from "express"
 import { getAuth } from "firebase/auth";
@@ -35,32 +35,54 @@ authRouter.use(session({
     rolling: true
 }));
 
-// authRouter.post("/signUp", async function (req: Request, res: Response, next: NextFunction): Promise<void> {
+authRouter.get("/myAccount", function (req: Request, res: Response): void {
+    res.render("myAccount", {
+        signUpDisplay: "block",
+        logInDisplay: "none",
+        error: "200"
+    })
+});
 
-//     let email = req.body.email
-//     let password = req.body.password
-//     let user = signUpUser(email, password)
-//     if (user != null) {
-//         session.user = email
-//         console.log(session.providerData)
-//     }
+authRouter.post("/signUp", async function (req: Request, res: Response, next: NextFunction): Promise<void> {
 
-//     res.redirect("/")
+    let email = req.body.email
+    let password = req.body.password
+    let user = signUpUser(email, password)
+    if (user == null) {
+        res.render("/myAccount", { error: "200" })
+    }
 
-// })
+    res.redirect("/")
 
-// authRouter.post("/logIn", async function (req: Request, res: Response, next: NextFunction): Promise<void> {
+})
 
-//     let email = req.body.email
-//     let password = req.body.password
-//     let user = await logInUser(email, password)
-//     if (user != null) {
-//         session.user = email
-//         console.log(session.providerData)
-//     }
-//     res.redirect("/")
+authRouter.post("/logIn", async function (req: Request, res: Response, next: NextFunction): Promise<void> {
 
-// })
+    let email = req.body.email
+    let password = req.body.password
+    let user = await logInUser(email, password)
+    console.log(user)
+    if (user == null) {
+        res.render("myAccount", {
+            error: "404",
+            signUpDisplay: "none",
+            logInDisplay: "block"
+        })
+    } else {
+        res.redirect("/")
+    }
+
+})
+
+authRouter.post("/logOut", async (req: Request, res: Response, next: NextFunction): Promise<void> => {
+    let result = await logOutUser();
+    if (result) {
+        res.render("/myAccount")
+    } else {
+        res.redirect("/")
+    }
+
+})
 
 
 

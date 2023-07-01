@@ -1,19 +1,8 @@
 
-import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, GoogleAuthProvider, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { User } from "firebase/auth";
-require("dotenv").config()
+import fbAppConnect from "./firebaseConnection";
 
-const firebaseConfig = {
-    apiKey: process.env.FBAPIKEY,
-    authDomain: process.env.FBAUTHDOMAIN,
-    projectId: process.env.FBPROJECTID,
-    storageBucket: process.env.STORAGEBUCKET,
-    messagingSenderId: process.env.FBMESSAGINGSENDERID,
-    appId: process.env.FBAPPID,
-    measurementId: process.env.FBMEASUREMENTID
-
-};
 
 const actionCodeSettings = {
     // URL you want to redirect back to. The domain (www.example.com) for this
@@ -24,7 +13,7 @@ const actionCodeSettings = {
 };
 
 // Initialize Firebase Authentication and get a reference to the service
-const auth = getAuth(initializeApp(firebaseConfig));
+const auth = getAuth(fbAppConnect);
 const provider = new GoogleAuthProvider();
 provider.addScope('https://www.googleapis.com/auth/contacts.readonly');
 provider.setCustomParameters({
@@ -57,8 +46,20 @@ export async function logInUser(email: string, password: string): Promise<User |
         .catch((error) => {
             const errorCode = error.code;
             const errorMessage = error.message;
+            
         });
 
     return auth.currentUser
 
 }
+
+export async function logOutUser(): Promise<User | null> {
+    await signOut(auth).then(() => {
+        // Sign-out successful.
+    }).catch((error) => {
+        // An error happened.
+    });
+    return auth.currentUser
+}
+
+export default auth;

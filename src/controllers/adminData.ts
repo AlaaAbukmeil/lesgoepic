@@ -28,7 +28,7 @@ export async function fetchEvents(): Promise<eventInfo[]> {
     const database = client.db("upcomingevents");
     const eventsCollection = database.collection("events");
     const query = {
-      display: "true"
+      display: "false"
     };
     const options = {
       // sort returned documents in ascending order by title (A->Z)

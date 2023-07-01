@@ -4,12 +4,15 @@ import {
     fetchEvents, fetchAlbums,
     registerParticipant, getEventInfo,
     fetchPosts, getScheduleInfo,
-    getPostInfo} from "../controllers/adminData"
+    getPostInfo
+} from "../controllers/adminData"
 import { image } from "../models/image";
 import { eventInfo } from "../models/eventInfo";
 import { albumInfo } from "../models/albumInfo";
 import { postInfo } from "../models/postInfo";
 import { scheduleInfo } from "../models/scheduleInfo";
+import auth from "../controllers/fireBaseAuth"
+import { user } from "../models/user";
 
 require("dotenv").config()
 const router = Router();
@@ -28,11 +31,15 @@ var uploadScreenshot = multer({
     })
 });
 
-router.get("/", async function (req: Request, res: Response, next: NextFunction): Promise<void> {
+router.get("/", async function (req: any, res: Response, next: NextFunction): Promise<void> {
     let events: eventInfo[] = await fetchEvents();
     let scheduleInfo: scheduleInfo = await getScheduleInfo();
-    let registered = req.query.registered
-    let thankYouMessage = false
+    let registered: boolean|null = req.query.registered
+    let thankYouMessage : boolean = false
+    let username: any = auth.currentUser
+    if(username){
+        console.log(username.email)
+    } 
     if (registered) {
         thankYouMessage = true
     }
@@ -78,11 +85,6 @@ router.get("/.well-known/assetlinks.json", function (req: Request, res: Response
     res.sendFile(path.normalize(__dirname + '/assetslink.json'))
 });
 
-// router.get("/myAccount", function (req: Request, res: Response): void {
-//     res.render("myAccount")
-// });
-
-
 router.get("/register:eventId", async function (req: Request, res: Response, next: NextFunction): Promise<void> {
     let eventId: string = req.params.eventId.replace(":", "")
     let eventDetails: eventInfo = await getEventInfo(eventId)
@@ -96,7 +98,7 @@ router.get("/register:eventId", async function (req: Request, res: Response, nex
 });
 
 router.get("/post:postId", async function (req: Request, res: Response, next: NextFunction): Promise<void> {
-    let postId : string = req.params.postId.replace(":", "")
+    let postId: string = req.params.postId.replace(":", "")
     let post: postInfo = await getPostInfo(postId)
     res.render("post", {
         postInfo: post
