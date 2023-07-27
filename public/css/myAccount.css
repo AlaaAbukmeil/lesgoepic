@@ -1,0 +1,181 @@
+.authButtons{
+    font-size: 20px;
+    /* margin: 0; */
+    display: inline-block;
+    position: relative;
+    font-family: 'Libre Baskerville', serif;
+}
+
+.authButtons::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    background-color: #581845;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+  }
+  
+  .authButtons:hover::after {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+  }
+
+.signInCard {
+    /* display: flex; */
+    align-items: center;
+
+}
+
+.signInCol {
+    /* display: flex; */
+    margin: auto;
+
+}
+#signUp{
+    display: none
+}
+
+.signInRow {
+    background-color: #EBDEF0;
+    /* background-image: url("https://storage.googleapis.com/lesgoepicadmin.appspot.com/hostBucket/Image%20Background%20Orange%20Minimal%20Phone%20Wallpaper.png");
+    */
+    padding: 30px;
+    border-radius: 12px;
+    /* width: 100%; */
+}
+
+.signUp input {
+    border: 1px solid black
+}
+
+.signInRow h3 {
+    font-family: 'Libre Baskerville', serif;
+    margin: 20px auto;
+    color: black;
+}
+
+
+.signInRow h4 {
+    color: black;
+}
+
+.signUpButton {
+    margin-left: auto
+}
+
+.icon {
+    display: flex;
+    margin: auto;
+    font-size: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    max-width: 60%;
+    border-radius: 12px;
+    transition: background-color 0.5s ease;
+}
+
+.fabIcon {
+    display: flex;
+    margin: auto;
+    font-size: 50px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    text-decoration: none;
+    color: black;
+    background-color: white;
+    max-width: 60%;
+    border-radius: 12px;
+    transition: background-color 0.5s ease;
+}
+
+.fabIcon:hover {
+    color: white;
+    background-color: #EE2730;
+    transition: background-color 0.5s ease;
+}
+
+.fabIcon:hover i {
+    color: white;
+    background-color: #EE2730;
+    transition: background-color 0.5s ease;
+}
+
+.formTextInputMyAccount {
+    border-radius: 6px;
+    border: 0px;
+    padding: 5px;
+    width: 100%;
+    font-family: 'Roboto Slab', serif;
+
+}
+
+.googleAuth {
+    margin: auto
+}
+
+.googleAuthButton {
+    background-color: #581845;
+    color: white;
+    display: flex;
+    margin-top: 25px;
+    width: 100%;
+    text-align: center;
+}
+
+.googleAuthButton i {
+    width: 100%;
+    font-size: 40px;
+    margin: 20px 0px;
+}
+
+.googleAuth h4 {
+    color: white;
+    height: 100%;
+    text-align: center;
+    margin: 25px 0;
+}
+
+.button-container {
+    text-align: right;
+    /* Aligns buttons to the right within the container */
+}
+
+.btn-col {
+    margin-left: 10px;
+    margin-bottom: 20px;
+    /* Adds a small margin between the buttons */
+}
+.errorMessage{
+    color: red;
+    font-weight: bolder;
+    text-align: center;
+    margin-top: 10px;
+}
+
+@keyframes dropIn {
+    from {
+        opacity: 0;
+        transform: translateY(-100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translate(0px);
+    }
+}
+
+@media only screen and (max-width: 800px) {
+
+    .signInRow {
+
+        padding: 10px;
+
+    }
+}

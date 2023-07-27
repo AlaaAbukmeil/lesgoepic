@@ -1,0 +1,218 @@
+@import url('https://fonts.googleapis.com/css2?family=Nabla&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Play&display=swap');
+
+html {
+  max-width: 100%
+}
+
+body {
+  font-family: 'Roboto Slab', serif;
+  background-color: #F6E1FE;
+  overflow-x: hidden;
+  max-width: 100%;
+  
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+footer {
+  margin-top: auto;
+}
+
+h1 {
+  font-family: 'Libre Baskerville', serif;
+}
+
+h2 {
+  font-family: 'Libre Baskerville', serif;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.aboutUsTitle {
+  margin-top: 20px
+}
+
+.row {
+  --bs-gutter-x: 0;
+}
+
+.cardImage {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 5px;
+  transition: 0.5s all ease-in-out;
+}
+
+.cardImage:hover {
+  height: 290px
+}
+
+.albums .eventCard {
+  border-radius: 12px;
+}
+
+.title {
+  text-align: center;
+}
+
+.descriptionAlbums {
+  text-align: justify;
+  font-weight: 600;
+  font-family: 'Roboto Slab', serif;
+}
+
+.youtubeVideo {
+  width: 100%;
+  min-height: 300px;
+  object-fit: contain;
+  margin: 20px 0px;
+  border-radius: 2rem;
+}
+
+.subscribeButtonYoutube {
+  width: 100px
+}
+
+.card-body {
+  text-align: justify;
+}
+
+.thankYouMessage {
+  font-size: 40px;
+  text-align: center;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  --color-primary: #f6aca2;
+  --color-secondary: #f49b90;
+  --color-tertiary: #f28b7d;
+  --color-quaternary: #f07a6a;
+  --color-quinary: #ee6352;
+  /*
+  --color-primary: #5192ED;
+  --color-secondary: #69A1F0;
+  --color-tertiary: #7EAEF2;
+  --color-quaternary: #90BAF5;
+  --color-quinary: #A2C4F5;
+  */
+}
+
+
+
+.content {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+}
+
+.text_shadows {
+  text-shadow: 3px 3px 0 var(--color-secondary), 6px 6px 0 var(--color-tertiary),
+    9px 9px var(--color-quaternary), 12px 12px 0 var(--color-quinary);
+  font-family: bungee, sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  font-size: calc(2rem + 5vw);
+  text-align: center;
+  margin: 0;
+  color: var(--color-primary);
+  /* //color: transparent;
+  //background-color: white;
+  //background-clip: text; */
+  animation: shadows 1.2s ease-in infinite, move 1.2s ease-in infinite;
+  letter-spacing: 0.4rem;
+}
+
+
+.scheduleInfo {
+  display: flex;
+  margin: auto
+}
+
+.scheduleInfo img {
+  border-radius: 12px;
+  margin: 20px 0px;
+  height: auto;
+  width: 100%;
+  object-fit: contain;
+  border-radius: 12px;
+  filter: drop-shadow(-7px -1px 6px #CDB3DC);
+}
+
+.scheduleTitle {
+  margin-top: 20px
+}
+
+.dropIn {
+  animation: dropIn 1s ease 200ms backwards;
+}
+
+@keyframes dropIn {
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(0px);
+  }
+}
+
+
+@media only screen and (max-width: 800px) {
+  .thankYouMessage {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  .youtubeVideo {
+    width: 100%;
+    min-height: 0px;
+    object-fit: contain;
+    margin: 20px 0px;
+    border-radius: 2rem;
+  }
+
+  .eventRegistrationClosedText {
+    font-size: 15px;
+  }
+
+  .card-form {
+    width: auto;
+    max-width: 340px;
+    display: flex;
+  }
+
+  .card-img-top {
+    width: 100%;
+    min-height: 0px;
+    object-fit: contain;
+
+  }
+
+  .card-body-album {}
+
+  .scheduleTitle h1 {
+    font-size: 15px;
+  }
+}

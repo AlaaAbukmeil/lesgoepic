@@ -1,0 +1,29 @@
+[
+    {
+       "relation":[
+          "delegate_permission/common.handle_all_urls"
+       ],
+       "target":{
+          "namespace":"android_app",
+          "package_name":"com.lesgoepic.www.twa",
+          "sha256_cert_fingerprints":[
+             "E2:C8:35:FB:67:87:F5:5D:B7:56:AA:57:26:33:FC:0B:F3:2A:4A:EE:46:DD:E5:5F:11:6B:AF:EC:34:E9:3F:01"
+          ]
+       }
+    },
+    {
+       "relation":[
+          "delegate_permission/common.handle_all_urls"
+       ],
+       "target":{
+          "namespace":"android_app",
+          "package_name":"com.lesgoepic.www.twa",
+          "sha256_cert_fingerprints":[
+             "10:69:E6:3D:C9:D5:43:BB:E2:DE:43:D2:F1:1B:01:31:91:97:1C:83:6F:E6:02:80:53:F5:8A:FA:AE:B0:7C:72"
+          ]
+       }
+    }
+ ]
+ 
+ 
+ 
