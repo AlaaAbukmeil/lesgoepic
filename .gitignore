@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Logs
 logs
 *.log
@@ -131,3 +132,6 @@ dist
 /nbproject/private/
 lesgoepicadmin-da3eee086dc5.json
 unusedcode
+=======
+node_modules
+>>>>>>> master

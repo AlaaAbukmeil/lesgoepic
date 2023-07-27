@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Ranchers&display=swap');
+.wrapper.three {
+    /* background-color: #010c3d; */
+}
+.three h3 {
+    font-family: "Ranchers", cursive;
+    background: url(https://media.giphy.com/media/12jcwKEZNh4GSQ/giphy.gif);
+    background-size: fill;
+    background-repeat:   no-repeat;
+    margin: 1.5rem;
+    /* display: inline-flex; */
+    font-size: 50px;
+    background-position: 0 0;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: #5b728a54;
+    animation: animatedOne 10s linear infinite;
+    text-align: center;
+
+}
+@keyframes animatedOne {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: 100% 0;
+    }
+}
