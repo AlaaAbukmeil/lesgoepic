@@ -2,13 +2,12 @@ import { useState, useEffect } from "react";
 import { albumInfo } from "../../models/albumInfo";
 import { Link } from "react-router-dom";
 import Loader from "../common/loader";
-import proxyUrl from "../common/proxy";
 import SeoHelment from "../common/seoHelment";
 import { seoParams } from "../../models/seoParams";
 
 function GetAlbums() {
   let [albums, setAlbums] = useState<albumInfo[]>([]);
-  let url: any = proxyUrl + "/albums";
+  let url: any = "https://api.lesgoepic.com/api/web/albums";
   useEffect(() => {
     fetch(url)
       .then((res) => {

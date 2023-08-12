@@ -23,6 +23,8 @@
   <link rel="stylesheet" href="%PUBLIC_URL%/css/upcomingEvents.css">
   <link rel="stylesheet" href="%PUBLIC_URL%/css/errorPage.css">
   <link rel="stylesheet" href="%PUBLIC_URL%/css/loader.css">
+  <link rel="stylesheet" href="%PUBLIC_URL%/css/briefCard.css">
+  <link rel="stylesheet" href="%PUBLIC_URL%/css/myEvents.css">
   <link rel="assetlinks.json file" href=".well-known/assetlinks.json" />
 </head>
 
@@ -30,13 +32,65 @@
   <div id="root"></div>
   <script src="https://kit.fontawesome.com/50a766792b.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
-  <script>
-    if (typeof navigator.serviceWorker !== 'undefined') {
-      navigator.serviceWorker.register('sw.js')
-    }
-  </script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <!--- Popupular JS Tag --->
+  <script type="text/javascript">
+    window.Popupular || function(w, d, s, u, p) {
+      window.Popupular = {
+        _q: [],
+        _p: p,
+        autoload: true
+      };
+      var s = d.createElement(s);
+      s.type = "text/javascript";
+      s.src = u;
+      s.async = true;
+      d.head.appendChild(s);
+    }(window, document, "script", "https://cdn.popupular.io/script.js", "31c64c46-a982-4111-9d31-f4d603f9e299");
+  </script>
+  <!--- Popupular JS Tag --->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-W212ES0X5C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
 
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag('js', new Date());
+
+    gtag('config', 'G-W212ES0X5C');
+  </script>
+  <script>
+    var MessageBirdChatWidgetSettings = {
+      widgetId: 'e437e435-906d-4133-b7da-afd14b84db86',
+      initializeOnLoad: true,
+    };
+    ! function() {
+      "use strict";
+      if (Boolean(document.getElementById("live-chat-widget-script"))) console.error("MessageBirdChatWidget: Snippet loaded twice on page");
+      else {
+        var e, t;
+        window.MessageBirdChatWidget = {}, window.MessageBirdChatWidget.queue = [];
+        for (var i = ["init", "setConfig", "toggleChat", "identify", "hide", "on", "shutdown"], n = function() {
+            var e = i[d];
+            window.MessageBirdChatWidget[e] = function() {
+              for (var t = arguments.length, i = new Array(t), n = 0; n < t; n++) i[n] = arguments[n];
+              window.MessageBirdChatWidget.queue.push([
+                [e, i]
+              ])
+            }
+          }, d = 0; d < i.length; d++) n();
+        var a = (null === (e = window) || void 0 === e || null === (t = e.MessageBirdChatWidgetSettings) || void 0 === t ? void 0 : t.widgetId) || "",
+          o = function() {
+            var e, t = document.createElement("script");
+            t.type = "text/javascript", t.src = "https://livechat.messagebird.com/bootstrap.js?widgetId=".concat(a), t.async = !0, t.id = "live-chat-widget-script";
+            var i = document.getElementsByTagName("script")[0];
+            null == i || null === (e = i.parentNode) || void 0 === e || e.insertBefore(t, i)
+          };
+        "complete" === document.readyState ? o() : window.attachEvent ? window.attachEvent("onload", o) : window.addEventListener("load", o, !1)
+      }
+    }();
+  </script>
 </body>

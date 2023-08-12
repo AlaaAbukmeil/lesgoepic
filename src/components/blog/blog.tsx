@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import Loader from "../common/loader"
 import SeoHelment from "../common/seoHelment";
 import { seoParams } from "../../models/seoParams";
-import proxyUrl from "../common/proxy";
 
 function getCaptionIndex(caption: string) {
 
@@ -26,7 +25,7 @@ function getCaptionIndex(caption: string) {
 
 function GetBlog() {
   let [posts, setPosts] = useState<postInfo[]>();
-  let url: any = proxyUrl + "/blog"
+  let url: any = "https://api.lesgoepic.com/api/web/blog"
   useEffect(() => {
     fetch(url)
       .then((res) => {
@@ -50,13 +49,13 @@ function GetBlog() {
       <div className="title">
         <h1>Blog</h1>
       </div>
+      <SeoHelment {...seoObject} />
 
       {posts.map((post, index) => {
         let captionIndex = getCaptionIndex(post.caption)
         let caption = post.caption.slice(0, captionIndex)
         return (
           <div key={index} className="row postsCard dropIn">
-            <SeoHelment {...seoObject} />
             <div className="col-lg-4 col-xs-12 postsContainer">
               <img src={post.coverImage} className="postImage" alt="..." />
             </div>

@@ -4,12 +4,11 @@ import { postInfo } from "../../models/postInfo";
 import Loader from "../common/loader";
 import SeoHelment from "../common/seoHelment";
 import { seoParams } from "../../models/seoParams";
-import proxyUrl from "../common/proxy";
 
 function GetPostDetails() {
   let [post, setPostDetails] = useState<postInfo>();
   let params: any = useParams();
-  let url: any = proxyUrl + "/post/" + params.postId;
+  let url: any = "https://api.lesgoepic.com/api/web/post/" + params.postId;
 
   useEffect(() => {
     fetch(url)

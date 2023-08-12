@@ -86,7 +86,7 @@ function Footer() {
                   <a href="/about-us">About Us</a>
                 </li>
                 <li>
-                  <a href="/feedBackForm">Feedback Form</a>
+                  <a href="/feedback-form">Feedback Form</a>
                 </li>
                 <li>
                   <a href="/terms-conditions">Terms and Conditions</a>
@@ -110,6 +110,10 @@ function Footer() {
                 <a
                   href="https://wa.me/+85265357490"
                   className="fab fa-whatsapp"
+                ></a>
+                <a
+                  href=" https://www.linkedin.com/company/lesgo-epic"
+                  className="fab fa-linkedin"
                 ></a>
               </div>
             </div>

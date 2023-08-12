@@ -7,12 +7,11 @@ import Loader from "../common/loader";
 import RegisterationClosed from "./eventRegisterationClosed";
 import SeoHelment from "../common/seoHelment";
 import { seoParams } from "../../models/seoParams";
-import proxyUrl from "../common/proxy";
 
 function GetEventDetails() {
   let [event, setEventDetails] = useState<eventInfo>();
   let params: any = useParams();
-  let url: any = proxyUrl + "/events/" + params.eventId;
+  let url: any = "https://api.lesgoepic.com/api/web/events/" + params.eventId;
 
   useEffect(() => {
     fetch(url)

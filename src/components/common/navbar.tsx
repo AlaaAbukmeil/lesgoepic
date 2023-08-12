@@ -1,4 +1,61 @@
+function navbarLoggedIn() {
+  return (
+    <div
+      className="dropdown-menu dropdown-menu-end animate slideIn"
+      aria-labelledby="navbarDropdown"
+    >
+      <a className="dropdown-item" href="/my-events">
+        My Events
+      </a>
+      <a className="dropdown-item" href="/settings">
+        Settings
+      </a>
+      <hr className="dropdown-divider" />
+      <form action="/logOut" method="post">
+        <button
+          className="btn dropdown-item logOutBtn"
+          type="button"
+          onClick={handleLogOut}
+        >
+          Log Out
+        </button>
+      </form>
+    </div>
+  );
+}
+function navbarLoggedOut() {
+  return (
+    <div
+      className="dropdown-menu dropdown-menu-end animate slideIn"
+      aria-labelledby="navbarDropdown"
+    >
+      <a className="dropdown-item" href="/auth">
+        Sign Up/Login
+      </a>
+    </div>
+  );
+}
+
+function handleLogOut(event: any) {
+  localStorage.removeItem("token");
+  localStorage.removeItem("username");
+  localStorage.removeItem("email");
+  localStorage.removeItem("timestamp");
+  window.location.href = "/";
+}
+function checkTimestamp() {
+  const timestamp: any = localStorage.getItem("timestamp");
+  const timestampPeriod = new Date().getTime() - 24 * 60 * 60 * 1000;
+  if (timestampPeriod > parseInt(timestamp)) {
+    localStorage.removeItem("token");
+    localStorage.removeItem("username");
+    localStorage.removeItem("email");
+    localStorage.removeItem("timestamp");
+  }
+}
 function NavBar() {
+  const username = localStorage.getItem("username")?.split(" ")[0];
+  checkTimestamp();
   return (
     <div>
       <nav className="navbar navbar-expand-lg  navbar-custom">
@@ -26,6 +83,15 @@ function NavBar() {
                   href="/"
                 >
                   Home
+                </a>
+              </li>
+              <li className="nav-item">
+                <a
+                  className="nav-link active header-item"
+                  aria-current="page"
+                  href="/upcoming-events"
+                >
+                  Upcoming Events
                 </a>
               </li>
               <li className="nav-item">
@@ -65,26 +131,17 @@ function NavBar() {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <i className="fa-solid fa-user"></i>
+                  {username ? (
+                    <div>
+                      {username}{" "}
+                      <i className="fa-solid fa-caret-down fa-beat"></i>
+                    </div>
+                  ) : (
+                    <i className="fa-solid fa-user"></i>
+                  )}
                 </a>
                 {/* <!-- Here's the magic. Add the .animate and .slideIn classes to your .dropdown-menu and you're all set! --> */}
-                <div
-                  className="dropdown-menu dropdown-menu-end animate slideIn"
-                  aria-labelledby="navbarDropdown"
-                >
-                  <a className="dropdown-item" href="/myAccount">
-                    My Account
-                  </a>
-                  <hr className="dropdown-divider" />
-                  <form action="/logOut" method="post">
-                    <button
-                      className="btn dropdown-item logOutBtn"
-                      type="submit"
-                    >
-                      Log Out
-                    </button>
-                  </form>
-                </div>
+                {username ? navbarLoggedIn() : navbarLoggedOut()}
               </li>
             </ul>
           </div>

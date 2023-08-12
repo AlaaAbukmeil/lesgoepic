@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import Loader from "../common/loader"
 import { scheduleInfo } from "../../models/scheduleInfo";
-import proxyUrl from "../common/proxy";
 
 function GetSchedule() {
-  let url: any = proxyUrl + "/schedule"
+  let url: any = "https://api.lesgoepic.com/api/web/schedule"
   let [schedule, setSchedule] = useState<scheduleInfo>();
   useEffect(() => {
     fetch(url)

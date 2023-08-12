@@ -1,6 +1,15 @@
+import SeoHelment from "../common/seoHelment";
+import { seoParams } from "../../models/seoParams";
+
 function GetAboutUs() {
+  let seoObject: seoParams = {
+    title: "About Us",
+    description: "LesGo Epic's Values!",
+    keywords: "[values, principles, epic, lesgo epic, letsgo epic, who are we, what are we]",
+  };
   return (
     <div className="card card-form">
+      <SeoHelment {...seoObject} />
       <div className="about-us">
         <center>
           <img src="/photos/logo.png" className="header-logo" alt="logo" />

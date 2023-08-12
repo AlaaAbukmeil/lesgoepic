@@ -1,15 +1,13 @@
 import { useState, useEffect } from "react";
 import { eventInfo } from "../../models/eventInfo";
 import { Link } from "react-router-dom";
-import GetYouTubeVideo from "./youtubeVideo";
-import GetSchedule from "./schedule";
 import SeoHelment from "../common/seoHelment";
 import { seoParams } from "../../models/seoParams";
-import proxyUrl from "../common/proxy";
+import GetSchedule from "./schedule";
 
 function GetEvents() {
   let [events, setEvents] = useState<eventInfo[]>([]);
-  let url = proxyUrl + "/events"
+  let url = "https://api.lesgoepic.com/api/web/events";
   useEffect(() => {
     fetch(url)
       .then((res) => {
@@ -19,12 +17,23 @@ function GetEvents() {
         setEvents(data.events);
       });
   }, []);
-  
+
   let seoObject: seoParams = {
     title: "Upcoming Events",
     description: "LesGo Epic's upcoming events!",
     keywords: "[events, lesgo, epic, lesgo epic, letsgo epic]",
+  };
 
+  if (events.length == 0) {
+    return (
+      <div>
+        <SeoHelment {...seoObject} />
+        <div className="title">
+          <h1>Upcoming Events</h1>
+        </div>
+        <GetSchedule />
+      </div>
+    );
   }
 
   return (
@@ -47,7 +56,7 @@ function GetEvents() {
                 <h4 className="price">💸 {event.cost}</h4>
                 <h4 className="name">🌟 {event.shortDescription}</h4>
                 <Link
-                  to={"events/:" + event["_id"]}
+                  to={"/events/:" + event["_id"]}
                   className="btn signupButton"
                 >
                   Sign up
@@ -57,7 +66,6 @@ function GetEvents() {
           </div>
         ))}
       </div>
-      <GetYouTubeVideo />
       <GetSchedule />
     </div>
   );
