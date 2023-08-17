@@ -15,7 +15,7 @@ function getEventInformation(eventDetails: eventInfo) {
       </center>
       <p className="formDescription">📍 {eventDetails.location}</p>
       <p className="formDescription">🗓 {eventDetails.date}</p>
-      <p className="formDescription"> 💸 {eventDetails.cost} </p>
+      <p className="formDescription"> 💸 {eventDetails.cost} HKD</p>
       <p
         className="formDescription"
         dangerouslySetInnerHTML={{ __html: description }}
@@ -232,7 +232,7 @@ function EventDetailsMainCard(eventDetails: eventInfo) {
                   </h4>
                   <div className="">
                     <a
-                      href="<%=eventDetails['stripe'] %>"
+                      href={eventDetails['stripe']}
                       target="_blank"
                       className=" btn credit-icon"
                     >

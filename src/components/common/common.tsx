@@ -69,8 +69,6 @@ export function downloadReciept(eventName: string, response: any) {
   height += 15;
   doc.text(`Payment Method: ${payment}`, 15, height);
   height += 15;
-  doc.text(`Meeting Up Details: ${response.eventMeetingUpDetails}`, 15, height);
-  height += 15;
   for (let index = 0; index < responseKeys.length; index++) {
     const element = responseKeys[index];
     doc.text(

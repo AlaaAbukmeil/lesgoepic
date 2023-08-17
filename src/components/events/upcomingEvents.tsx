@@ -28,9 +28,6 @@ function GetEvents() {
     return (
       <div>
         <SeoHelment {...seoObject} />
-        <div className="title">
-          <h1>Upcoming Events</h1>
-        </div>
         <GetSchedule />
       </div>
     );
@@ -53,7 +50,7 @@ function GetEvents() {
               <div className="card-body">
                 <h4 className="date">📅 {event.date}</h4>
                 <h4 className="name">📍 {event.name}</h4>
-                <h4 className="price">💸 {event.cost}</h4>
+                <h4 className="price">💸 {event.cost} HKD</h4>
                 <h4 className="name">🌟 {event.shortDescription}</h4>
                 <Link
                   to={"/events/:" + event["_id"]}

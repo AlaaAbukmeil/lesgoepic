@@ -169,16 +169,16 @@ function SignUpLogIn() {
   return (
     <div className="row signInCard">
       <SeoHelment {...seoObject} />
-      <div className="col-8 signInCol dropIn button-container">
+      <div className="col-12 col-lg-8 col-md-10 col-sm-10 signInCol dropIn button-container">
         <button
-          className="nav-link active btn-col authButtons"
+          className="btn registerButton signUpButton authButtons"
           name="signUp"
           onClick={(event) => toggleDisplay(event)}
         >
           Sign Up
         </button>
         <button
-          className="nav-link active btn-col authButtons"
+          className="btn registerButton signUpButton authButtons"
           onClick={(event) => toggleDisplay(event)}
           name="login"
         >
@@ -201,7 +201,7 @@ function SignUpLogIn() {
               onSubmit={(event) => handleSubmitSignUp(event)}
             >
               <h4 className="name">
-                <b>Enter your Username:</b>
+                <b>Enter your Username</b>
               </h4>
               <input
                 type="text"
@@ -209,11 +209,11 @@ function SignUpLogIn() {
                 value={username}
                 onChange={handleChange}
                 className="formTextInputMyAccount "
-                placeholder="Enter your Username"
+                placeholder="e.g. Tim"
                 required
               />
               <h4 className="name">
-                <b>Enter your Email:</b>
+                <b>Enter your Email</b>
               </h4>
               <input
                 type="email"
@@ -221,11 +221,11 @@ function SignUpLogIn() {
                 value={signUpEmail}
                 onChange={handleChange}
                 className="formTextInputMyAccount "
-                placeholder="Enter your Email"
+                placeholder="e.g. team@lesgoepic.com"
                 required
               />
               <h4 className="name">
-                <b>Enter your Age Group:</b>
+                <b>Enter your Age Group</b>
               </h4>
 
               <select
@@ -242,7 +242,7 @@ function SignUpLogIn() {
                 <option value="40+">40+</option>
               </select>
               <h4 className="name">
-                <b>Enter your Password:</b>
+                <b>Enter your Password</b>
               </h4>
               <input
                 type="password"
@@ -250,11 +250,11 @@ function SignUpLogIn() {
                 value={signUpPassword}
                 onChange={handleChange}
                 className="formTextInputMyAccount "
-                placeholder="Enter your password"
+                placeholder="******"
                 required
               />
               <h4 className="name">
-                <b>Confirm your Password:</b>
+                <b>Confirm your Password</b>
               </h4>
               <input
                 type="password"
@@ -262,7 +262,7 @@ function SignUpLogIn() {
                 value={signUpPasswordConfrim}
                 onChange={handleChange}
                 className="formTextInputMyAccount "
-                placeholder="Confirm your password"
+                placeholder="******"
                 required
               />
               {authStatus && <p className="error">{authStatus}</p>}
@@ -289,7 +289,7 @@ function SignUpLogIn() {
               className="signUp"
             >
               <h4 className="name">
-                <b>Enter your Email:</b>
+                <b>Enter your Email</b>
               </h4>
               <input
                 type="email"
@@ -297,11 +297,11 @@ function SignUpLogIn() {
                 value={loginEmail}
                 onChange={handleChange}
                 className="formTextInputMyAccount "
-                placeholder="Enter your Email"
+                placeholder="e.g. team@lesgoepic.com"
                 required
               />
               <h4 className="name">
-                <b>Enter your Password:</b>
+                <b>Enter your Password</b>
               </h4>
               <input
                 type="password"
@@ -309,7 +309,7 @@ function SignUpLogIn() {
                 value={loginPassword}
                 onChange={handleChange}
                 className="formTextInputMyAccount "
-                placeholder="Enter your Password"
+                placeholder="******"
                 required
               />
               {authStatus && <p className="error">{authStatus}</p>}

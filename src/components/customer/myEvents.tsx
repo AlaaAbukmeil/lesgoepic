@@ -96,7 +96,8 @@ function MyEvents() {
               <h4 className="name descriptionAlbums">
                 Meeting Up Details: 
               </h4>
-              <h4 className="name formNotes">{meetingUpDetails}</h4>
+              
+              <h4 className="name formNotes" dangerouslySetInnerHTML={ {__html: meetingUpDetails} } />
               <div>
             <button className="btn signupButton" onClick={(event) => handleDownloadReciept(response.eventName, response)}>Download Reciept</button>
             </div>

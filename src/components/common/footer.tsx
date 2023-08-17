@@ -20,7 +20,7 @@ function Footer() {
 
   return (
     <div>
-      <footer className="new_footer_area bg_color" >
+      <footer className="new_footer_area bg_color">
         <div className="row new_footer_top">
           <div className="col-lg-3 col-md-6 col-6">
             <div
@@ -112,8 +112,12 @@ function Footer() {
                   className="fab fa-whatsapp"
                 ></a>
                 <a
-                  href=" https://www.linkedin.com/company/lesgo-epic"
+                  href="https://www.linkedin.com/company/lesgo-epic"
                   className="fab fa-linkedin"
+                ></a>
+                <a
+                  href="https://www.facebook.com/profile.php?id=100091951436054"
+                  className="fab fa-facebook"
                 ></a>
               </div>
             </div>
