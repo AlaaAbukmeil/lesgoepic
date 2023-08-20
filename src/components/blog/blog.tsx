@@ -24,8 +24,10 @@ function getCaptionIndex(caption: string) {
 }
 
 function GetBlog() {
+  const language = localStorage.getItem("language")
   let [posts, setPosts] = useState<postInfo[]>();
-  let url: any = "https://api.lesgoepic.com/api/web/blog"
+  let url: any = `https://api.lesgoepic.com/api/web/blog?language=${language}`
+
   useEffect(() => {
     fetch(url)
       .then((res) => {
@@ -40,14 +42,18 @@ function GetBlog() {
   }
 
   let seoObject: seoParams = {
-    title: "Blog",
+    title: language == "en" ? "Blog" : "部落格",
     description: "LesGo Epic's blog",
     keywords: "[lesgo, epic, lesgo epic, blog, post, hong kong, hiking, kayaking, sports]",
+    meta: {
+      name: `description`,
+      content: "Blog",
+    }
   }
   return (
     <div>
       <div className="title">
-        <h1>Blog</h1>
+        <h1>{language == "en" ? "Blog" : "部落格"}</h1>
       </div>
       <SeoHelment {...seoObject} />
 
@@ -67,7 +73,7 @@ function GetBlog() {
               </h4>
 
               <Link to={"/post/:" + post["_id"]} className="btn signupButton">
-                Read More!
+                {language == "en" ? "Read More!": "閱讀更多！"}
               </Link>
             </div>
           </div>

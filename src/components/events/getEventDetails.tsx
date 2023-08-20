@@ -11,7 +11,8 @@ import { seoParams } from "../../models/seoParams";
 function GetEventDetails() {
   let [event, setEventDetails] = useState<eventInfo>();
   let params: any = useParams();
-  let url: any = "https://api.lesgoepic.com/api/web/events/" + params.eventId;
+  const language = localStorage.getItem("language")
+  let url: any = `https://api.lesgoepic.com/api/web/events/${params.eventId}?language=${language}`
 
   useEffect(() => {
     fetch(url)
@@ -32,6 +33,10 @@ function GetEventDetails() {
     description:
     event?.description || "Events",
     keywords: "[event, lesgo epic, hong kong, fun, university, hiking, kayaking ]",
+    meta: {
+      name: `description`,
+      content: event?.name,
+    }
   };
 
   if (event == null) {

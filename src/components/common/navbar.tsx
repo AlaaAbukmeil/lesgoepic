@@ -1,14 +1,15 @@
 function navbarLoggedIn() {
+  const langauge = localStorage.getItem("language")
   return (
     <div
       className="dropdown-menu dropdown-menu-end animate slideIn"
       aria-labelledby="navbarDropdown"
     >
       <a className="dropdown-item" href="/my-events">
-        My Events
+        {langauge == "en" ?`My Events`: "我的活動"}
       </a>
       <a className="dropdown-item" href="/settings">
-        Settings
+        {langauge == "en" ?"Settings": "設定"}
       </a>
       <hr className="dropdown-divider" />
       <form action="/logOut" method="post">
@@ -17,23 +18,34 @@ function navbarLoggedIn() {
           type="button"
           onClick={handleLogOut}
         >
-          Log Out
+          {langauge == "en"? "Log Out": "設定"}
         </button>
       </form>
     </div>
   );
 }
 function navbarLoggedOut() {
+  const langauge = localStorage.getItem("language")
   return (
     <div
       className="dropdown-menu dropdown-menu-end animate slideIn"
       aria-labelledby="navbarDropdown"
     >
       <a className="dropdown-item" href="/auth">
-        Sign Up/Login
+        {langauge == "en" ? `Sign Up/Login`: "註冊/登入"}
       </a>
     </div>
   );
+}
+
+function switchLanguage(event: any) {
+  let language = localStorage.getItem("language");
+  if (language == "en") {
+    localStorage.setItem("language", "zh-HK");
+  } else {
+    localStorage.setItem("language", "en");
+  }
+  window.location.reload();
 }
 
 function handleLogOut(event: any) {
@@ -54,6 +66,7 @@ function checkTimestamp() {
   }
 }
 function NavBar() {
+  const language = localStorage.getItem("language");
   const username = localStorage.getItem("username")?.split(" ")[0];
   checkTimestamp();
   return (
@@ -80,9 +93,13 @@ function NavBar() {
                 <a
                   className="nav-link active header-item"
                   aria-current="page"
-                  href="/"
+                  onClick={(event) => switchLanguage(event)}
                 >
-                  Home
+                  <img
+                    src="https://storage.googleapis.com/lesgoepic.appspot.com/photosInWebsite/language.png"
+                    className="languageSwitch"
+                    alt=""
+                  />
                 </a>
               </li>
               <li className="nav-item">
@@ -91,7 +108,7 @@ function NavBar() {
                   aria-current="page"
                   href="/upcoming-events"
                 >
-                  Upcoming Events
+                  {language == "en" ? "Upcoming Events" : "活動預告"}
                 </a>
               </li>
               <li className="nav-item">
@@ -100,7 +117,7 @@ function NavBar() {
                   aria-current="page"
                   href="/albums"
                 >
-                  Albums
+                  {language == "en" ? "Albums" : "相簿"}
                 </a>
               </li>
               <li className="nav-item">
@@ -109,7 +126,7 @@ function NavBar() {
                   aria-current="page"
                   href="/blog"
                 >
-                  Blog
+                  {language == "en" ? "Blog" : "部落格"}
                 </a>
               </li>
               <li className="nav-item">
@@ -118,7 +135,8 @@ function NavBar() {
                   aria-current="page"
                   href="/about-us"
                 >
-                  About Us
+                  {language == "en" ? "About Us" : "關於我們"}
+                  
                 </a>
               </li>
               <li className="nav-item dropdown">

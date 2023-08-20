@@ -3,7 +3,8 @@ import Loader from "../common/loader"
 import { scheduleInfo } from "../../models/scheduleInfo";
 
 function GetSchedule() {
-  let url: any = "https://api.lesgoepic.com/api/web/schedule"
+  const language = localStorage.getItem("language");
+  let url: any = `https://api.lesgoepic.com/api/web/schedule?language=${language}`
   let [schedule, setSchedule] = useState<scheduleInfo>();
   useEffect(() => {
     fetch(url)
@@ -21,7 +22,7 @@ function GetSchedule() {
     <div>
       <div className="title scheduleTitle">
         <h1>
-          Our Monthly Schedule for <br />
+          {language == "en" ? "Our Monthly Schedule for": "我們的每月日程表"} <br />
           {schedule["scheduleTime"]}
         </h1>
       </div>

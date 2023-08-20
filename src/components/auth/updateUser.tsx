@@ -30,6 +30,10 @@ function UpdateUser() {
     title: "Settings",
     description: "LesGo Epic's User Settings",
     keywords: "[events, lesgo, epic, lesgo epic, letsgo epic, login, setting]",
+    meta: {
+      name: `description`,
+      content: "User Settings",
+    }
   };
 
   function handleChange(event: any) {

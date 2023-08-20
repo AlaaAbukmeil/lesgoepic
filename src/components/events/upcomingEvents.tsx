@@ -5,9 +5,13 @@ import SeoHelment from "../common/seoHelment";
 import { seoParams } from "../../models/seoParams";
 import GetSchedule from "./schedule";
 
+
+
 function GetEvents() {
   let [events, setEvents] = useState<eventInfo[]>([]);
-  let url = "https://api.lesgoepic.com/api/web/events";
+  const language = localStorage.getItem("language")
+  let url = `https://api.lesgoepic.com/api/web/events?language=${language}`
+  
   useEffect(() => {
     fetch(url)
       .then((res) => {
@@ -19,9 +23,13 @@ function GetEvents() {
   }, []);
 
   let seoObject: seoParams = {
-    title: "Upcoming Events",
-    description: "LesGo Epic's upcoming events!",
+    title: language == "en" ? "Upcoming Events": "活動預告",
+    description: "LesGo Epic's upcoming events",
     keywords: "[events, lesgo, epic, lesgo epic, letsgo epic]",
+    meta: {
+      name: `description`,
+      content: "upcoming events",
+    }
   };
 
   if (events.length == 0) {
@@ -32,28 +40,31 @@ function GetEvents() {
       </div>
     );
   }
-
+function handleUpcomingEventsRedirect(event: any, url: any): any{
+  window.location.href = url
+}
   return (
     <div>
       <SeoHelment {...seoObject} />
       <div className="title">
-        <h1>Upcoming Events</h1>
+        <h1>{language == "en" ? "Upcoming Events": "活動預告"}</h1>
       </div>
       <div className="events row">
-        {events.map((event: eventInfo, index: number) => (
+        {events.map((upcoming: eventInfo, index: number) => (
           <div
             key={index}
             className="col-lg-4 col-md-6 col-10 eventCard dropIn"
+            onClick={(event) => handleUpcomingEventsRedirect(event, "/events/:" + upcoming["_id"] || "")}
           >
             <div className="card">
-              <img src={event.image} className="card-img-top" alt="..." />
+              <img src={upcoming.image} className="card-img-top" alt="..." />
               <div className="card-body">
-                <h4 className="date">📅 {event.date}</h4>
-                <h4 className="name">📍 {event.name}</h4>
-                <h4 className="price">💸 {event.cost} HKD</h4>
-                <h4 className="name">🌟 {event.shortDescription}</h4>
+                <h4 className="date">📅 {upcoming.date}</h4>
+                <h4 className="name">📍 {upcoming.name}</h4>
+                <h4 className="price">💸 {upcoming.cost} HKD</h4>
+                <h4 className="name">🌟 {upcoming.shortDescription}</h4>
                 <Link
-                  to={"/events/:" + event["_id"]}
+                  to={"/events/:" + upcoming["_id"]}
                   className="btn signupButton"
                 >
                   Sign up

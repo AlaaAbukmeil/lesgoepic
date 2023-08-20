@@ -35,6 +35,10 @@ function MyEvents() {
     description: "LesGo Epic's User Events",
     keywords:
       "[events, lesgo, epic, lesgo epic, letsgo epic, login, events, reciept]",
+      meta: {
+        name: `description`,
+        content: "User Events",
+      }
   };
 
   if (requestStatus) {

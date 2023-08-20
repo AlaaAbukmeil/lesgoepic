@@ -67,6 +67,10 @@ function SignUpLogIn() {
     title: "Login",
     description: "LesGo Epic's Login",
     keywords: "[events, lesgo, epic, lesgo epic, letsgo epic, login, sigup]",
+    meta: {
+      name: `description`,
+      content: "Login/Sign Up",
+    }
   };
 
   async function handleSubmitSignUp(event: any) {
@@ -201,7 +205,7 @@ function SignUpLogIn() {
               onSubmit={(event) => handleSubmitSignUp(event)}
             >
               <h4 className="name">
-                <b>Enter your Username</b>
+                <b>Enter Your Full Name</b>
               </h4>
               <input
                 type="text"
@@ -209,11 +213,11 @@ function SignUpLogIn() {
                 value={username}
                 onChange={handleChange}
                 className="formTextInputMyAccount "
-                placeholder="e.g. Tim"
+                placeholder="e.g. Tim Duke"
                 required
               />
               <h4 className="name">
-                <b>Enter your Email</b>
+                <b>Enter Your Email</b>
               </h4>
               <input
                 type="email"
@@ -225,7 +229,7 @@ function SignUpLogIn() {
                 required
               />
               <h4 className="name">
-                <b>Enter your Age Group</b>
+                <b>Enter Your Age Group</b>
               </h4>
 
               <select
@@ -242,7 +246,7 @@ function SignUpLogIn() {
                 <option value="40+">40+</option>
               </select>
               <h4 className="name">
-                <b>Enter your Password</b>
+                <b>Enter Your Password</b>
               </h4>
               <input
                 type="password"
@@ -254,7 +258,7 @@ function SignUpLogIn() {
                 required
               />
               <h4 className="name">
-                <b>Confirm your Password</b>
+                <b>Confirm Your Password</b>
               </h4>
               <input
                 type="password"
@@ -289,7 +293,7 @@ function SignUpLogIn() {
               className="signUp"
             >
               <h4 className="name">
-                <b>Enter your Email</b>
+                <b>Enter Your Email</b>
               </h4>
               <input
                 type="email"
@@ -301,7 +305,7 @@ function SignUpLogIn() {
                 required
               />
               <h4 className="name">
-                <b>Enter your Password</b>
+                <b>Enter Your Password</b>
               </h4>
               <input
                 type="password"

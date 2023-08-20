@@ -39,6 +39,12 @@ h1{
 .subscribeButton{
 
 }
+.upcomingRedirectButton{
+
+  margin: auto;
+  margin-top: 25px;
+
+}
 .events {
   margin-bottom: 50px;
 }

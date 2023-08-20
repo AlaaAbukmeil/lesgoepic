@@ -9,8 +9,13 @@ import Submitted from "./submitted";
 function FeedbackForm() {
   let seoObject: seoParams = {
     title: "Feedback Form",
-    description: "LesGo Epic's Feedback Form!",
+    description: "LesGo Epic's Feedback Form",
     keywords: "[values, principles, epic, lesgo epic, letsgo epic, feedback]",
+    meta: {
+      name: `description`,
+      content: "Feedback Form",
+    }
+    
   };
   const [requestStatus, setRequestStatus] = useState(false);
   const [submitted, setSubmitted] = useState(false);

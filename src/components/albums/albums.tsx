@@ -6,8 +6,9 @@ import SeoHelment from "../common/seoHelment";
 import { seoParams } from "../../models/seoParams";
 
 function GetAlbums() {
+  const language = localStorage.getItem("language")
   let [albums, setAlbums] = useState<albumInfo[]>([]);
-  let url: any = "https://api.lesgoepic.com/api/web/albums";
+  let url: any = `https://api.lesgoepic.com/api/web/albums?language=${language}`;
   useEffect(() => {
     fetch(url)
       .then((res) => {
@@ -18,10 +19,14 @@ function GetAlbums() {
       });
   }, []);
   let seoObject: seoParams = {
-    title: "Albums",
+    title: language == "en" ? "Albums" : "相簿",
     description: "LesGo Epic's Albums",
     keywords:
       "[hiking, hong kong, albums, photos, kayaking, epic, lesgo epic, lesgo]",
+    meta: {
+      name: `description`,
+      content: "Albums",
+    }
   };
   if (!albums.length) {
     return (
@@ -36,7 +41,7 @@ function GetAlbums() {
     <div>
       <SeoHelment {...seoObject} />
       <div className="title">
-        <h1>Albums</h1>
+        <h1>{language == "en" ? "Albums" : "相簿"}</h1>
       </div>
       <div className="albums row">
         {albums.map((album: albumInfo, index) => (
@@ -50,7 +55,7 @@ function GetAlbums() {
                 <h6 className="date formNotes">{album.date}</h6>
                 <h4 className="name descriptionAlbums">{album.name}</h4>
                 <Link to={album.driveLink} className="btn signupButton">
-                  View Album
+                  {language == "en" ? `View Album`: "查看相簿"}
                 </Link>
               </div>
             </div>

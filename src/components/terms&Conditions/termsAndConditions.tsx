@@ -4,10 +4,15 @@ import { seoParams } from "../../models/seoParams";
 function GetTermsAndConditions() {
   let seoObject: seoParams = {
     title: "Terms & Conditions",
-    description: "LesGo Epic's terms and conditions during events and regarding refund policy",
+    description:
+      "LesGo Epic's terms and conditions during events and regarding refund policy",
     keywords: "[terms, conditions, terms and conditions, refund]",
-
-  }
+    meta: {
+      name: `description`,
+      content:
+        "LesGo Epic's terms and conditions during events and regarding refund policy",
+    },
+  };
   return (
     <div className="card card-form">
       <SeoHelment {...seoObject} />
@@ -49,8 +54,7 @@ function GetTermsAndConditions() {
         </p>
         <p className="formNotes">
           7. The event may be cancelled or postponed due to inclement weather.
-          No refunds or exchanges will be given in the event of cancellation or
-          postponement.
+          No refunds or exchanges will be given in the event of postponement.
         </p>
         <p className="formNotes">
           8. The organizers of the event reserve the right to modify or cancel

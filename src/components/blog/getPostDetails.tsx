@@ -6,9 +6,10 @@ import SeoHelment from "../common/seoHelment";
 import { seoParams } from "../../models/seoParams";
 
 function GetPostDetails() {
+  const language = localStorage.getItem("language")
   let [post, setPostDetails] = useState<postInfo>();
   let params: any = useParams();
-  let url: any = "https://api.lesgoepic.com/api/web/post/" + params.postId;
+  let url: any = `https://api.lesgoepic.com/api/web/post/${params.postId}?language=${language}`
 
   useEffect(() => {
     fetch(url)
@@ -33,7 +34,11 @@ function GetPostDetails() {
   let seoObject: seoParams = {
     title: post?.name + " Post" || "Post",
     description: caption,
-    keywords: "[lesgo, epic, lesgo epic, blog, post, hong kong, hiking, kayaking, sports]"
+    keywords: "[lesgo, epic, lesgo epic, blog, post, hong kong, hiking, kayaking, sports]",
+    meta: {
+      name: `description`,
+      content: caption,
+    }
   }
 
   return (

@@ -18,6 +18,10 @@ function DeleteUser() {
     title: "Delete Account",
     description: "LesGo Epic's User Settings",
     keywords: "[events, lesgo, epic, lesgo epic, letsgo epic, login, setting, delete account]",
+    meta: {
+      name: `description`,
+      content: "User Settings",
+    }
   };
 
   function handleChange(event: any) {
