@@ -1,5 +1,5 @@
 .authButtons {
-    font-size: 20px;
+    font-size: 15px !important;
     /* margin: 0; */
     margin: 10px;
     display: inline-block;
@@ -86,7 +86,11 @@
 }
 
 .signUpButton {
+    /* font-family: 'Libre Baskerville', serif; */
     margin-left: auto
+}
+.authButtonType{
+    font-family: 'Libre Baskerville', serif;
 }
 
 .icon {

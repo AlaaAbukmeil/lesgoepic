@@ -61,10 +61,11 @@ function MyEvents() {
   return (
     <div className="row signInCard">
       <SeoHelment {...seoObject} />
-      <h4 className="creditText">Credit: {userCredit} HKD</h4>
+      <h4 className="creditText">Credit: {Math.round(userCredit)} HKD</h4>
 
       {userResponses.map((response: any, index) => {
         let meetingUpDetails = response.eventMeetingUpDetails;
+        meetingUpDetails = meetingUpDetails.substring(0, 300) + " ..."
 
         return (
           <div key={index} className="row postsCard myEventsCard dropIn">
@@ -72,7 +73,7 @@ function MyEvents() {
               <img
                 src={response.eventImage}
                 className=" myEventsImage"
-                alt="..."
+                alt={response.eventName}
               />
             </div>
             <div className="col postsContainer myEventsContainer postText">

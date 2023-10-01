@@ -10,11 +10,9 @@ function SignUpLogIn() {
   const [signUpDisplay, setSignUpDisplay] = useState("none");
   const [loginDisplay, setLoginDisplay] = useState("block");
 
-
-
   const [requestStatus, setRequestStatus] = useState(false);
   let [authStatus, setAuthStatus] = useState("");
-  let [resetPasswordCard, setResetPasswordCard] = useState(false)
+  let [resetPasswordCard, setResetPasswordCard] = useState(false);
 
   const [username, setUsername] = useState("");
   const [signUpEmail, setSignUpEmail] = useState("");
@@ -70,7 +68,7 @@ function SignUpLogIn() {
     meta: {
       name: `description`,
       content: "Login/Sign Up",
-    }
+    },
   };
 
   async function handleSubmitSignUp(event: any) {
@@ -92,8 +90,8 @@ function SignUpLogIn() {
         );
         setRequestStatus(false);
         if (auth.data.status == 200) {
-          const timestamp = (new Date().getTime()).toString()
-          localStorage.setItem("timestamp", timestamp)
+          const timestamp = new Date().getTime().toString();
+          localStorage.setItem("timestamp", timestamp);
           localStorage.setItem("token", auth.data.token);
           localStorage.setItem("username", auth.data.username);
           localStorage.setItem("email", auth.data.email);
@@ -123,8 +121,8 @@ function SignUpLogIn() {
       );
       setRequestStatus(false);
       if (auth.data.status == 200) {
-        const timestamp = (new Date().getTime()).toString()
-        localStorage.setItem("timestamp", timestamp)
+        const timestamp = new Date().getTime().toString();
+        localStorage.setItem("timestamp", timestamp);
         localStorage.setItem("token", auth.data.token);
         localStorage.setItem("username", auth.data.username);
         localStorage.setItem("email", auth.data.email);
@@ -136,34 +134,32 @@ function SignUpLogIn() {
     } catch (error) {}
   }
 
-  async function showResetCard(event: any){
-    setLoginDisplay("none")
-    setSignUpDisplay("none")
-    setResetPasswordCard(true)
+  async function showResetCard(event: any) {
+    setLoginDisplay("none");
+    setSignUpDisplay("none");
+    setResetPasswordCard(true);
   }
   const toggleDisplay = (event: any) => {
-    let name = event.target.name
-    setResetPasswordCard(false)
-    if(signUpDisplay == loginDisplay){
-      if(name == "signUp"){
-        setLoginDisplay((prevDisplay) =>
-        prevDisplay === "block" ? "none" : "block"
-      );
-      setAuthStatus("");
-      }else{
-        setSignUpDisplay((prevDisplay) =>
-        prevDisplay === "block" ? "none" : "block"
-      );
-      setAuthStatus("");
+    let name = event.target.name;
+    setResetPasswordCard(false);
+    // if (signUpDisplay == loginDisplay) {
+      if (name == "signUp") {
+        setLoginDisplay("none");
+        setSignUpDisplay("block");
+        setAuthStatus("");
+      } else {
+        setLoginDisplay("block");
+        setSignUpDisplay("none");
+        setAuthStatus("");
       }
-    }
-    setSignUpDisplay((prevDisplay) =>
-      prevDisplay === "block" ? "none" : "block"
-    );
-    setLoginDisplay((prevDisplay) =>
-      prevDisplay === "block" ? "none" : "block"
-    );
-    setAuthStatus("");
+    // }
+    // setSignUpDisplay((prevDisplay) =>
+    //   prevDisplay === "block" ? "none" : "block"
+    // );
+    // setLoginDisplay((prevDisplay) =>
+    //   prevDisplay === "block" ? "none" : "block"
+    // );
+    // setAuthStatus("");
   };
 
   if (requestStatus) {
@@ -270,7 +266,7 @@ function SignUpLogIn() {
                 required
               />
               {authStatus && <p className="error">{authStatus}</p>}
-              <button type="submit" className="btn registerButton signUpButton">
+              <button type="submit" className="btn registerButton signUpButton authButtonType">
                 Sign Up
               </button>
             </form>
@@ -317,10 +313,14 @@ function SignUpLogIn() {
                 required
               />
               {authStatus && <p className="error">{authStatus}</p>}
-              <button type="button" onClick={(event) => showResetCard(event)} className="btn registerButton signUpButton reset-password">
+              <button
+                type="button"
+                onClick={(event) => showResetCard(event)}
+                className="btn registerButton signUpButton reset-password"
+              >
                 Forgot Password?
               </button>
-              <button type="submit" className="btn registerButton signUpButton">
+              <button type="submit" className="btn registerButton signUpButton authButtonType">
                 Log In
               </button>
             </form>

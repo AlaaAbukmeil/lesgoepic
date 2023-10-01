@@ -5,8 +5,9 @@ function GetYouTubeVideo(){
     return(<div>
         <div className="row justify-content-center">
   <div className="col-8">
-    <Iframe className="youtubeVideo" url="https://www.youtube.com/embed/qnhhaXDBAx8" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    <Iframe className="youtubeVideo" url="https://www.youtube.com/embed/Nlojx7m8UfA" title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
       allowFullScreen></Iframe>
+      
   </div>
 </div>
 

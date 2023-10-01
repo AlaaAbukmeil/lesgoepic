@@ -33,7 +33,7 @@ function GetSchedule() {
         <img
           src={schedule["image"]}
           className="card-img-top dropIn"
-          alt="schedule"
+          alt="lesgo epic schedule"
         />
       </div>
     </div>

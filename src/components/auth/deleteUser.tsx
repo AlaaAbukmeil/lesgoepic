@@ -92,7 +92,7 @@ function DeleteUser() {
               </h4>
               <h4 className="name">
                 <p>We are sorry to let you go! 
-                  If you have any feedback for us, please leave us a review on our <a href="/feedback-form">feedback form</a> or raise a ticket on our live chat function.</p>
+                  If you have any feedback for us, please leave us one on our <a href="/feedback-form">feedback form</a> or raise a ticket on our live chat function.</p>
                 <b>Enter your Password:</b>
               </h4>
               <input

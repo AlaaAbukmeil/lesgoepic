@@ -13,8 +13,10 @@ export class eventInfo {
         public questions: string,
         public notes: string | undefined,
         public stripe: string | undefined,
-        public timeslots: string,
         public googleMaps: string | undefined,
-        public order: string | undefined
-    ) { }
+        public order: string | undefined,
+        public status: string | undefined,
+        public peopleCount : string,
+        public lastUpdated: string,
+        ) { }
 }

@@ -4,11 +4,12 @@
   display: block;
   margin-left: auto;
   margin-top: 25px;
-  width: auto
+  width: auto;
+  /* font-family: 'Libre Baskerville', serif; */
 }
 .signupButton:hover {
   background-color: #9C317C;
-
+  /* font-family: 'Libre Baskerville', serif; */
 }
 
 .registered-text {
@@ -43,8 +44,11 @@ h1{
 
   margin: auto;
   margin-top: 25px;
+  filter: drop-shadow(2px 4px 6px black);
 
 }
+
+
 .events {
   margin-bottom: 50px;
 }

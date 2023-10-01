@@ -50,7 +50,7 @@ function GetAlbums() {
             className="col-lg-4 col-md-6 col-10 eventCard dropIn"
           >
             <div className="card">
-              <img src={album.image} className="cardImage " alt="..." />
+              <img src={album.image} className="cardImage " alt={album.name} />
               <div className="card-body card-body-album">
                 <h6 className="date formNotes">{album.date}</h6>
                 <h4 className="name descriptionAlbums">{album.name}</h4>

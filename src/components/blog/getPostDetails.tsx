@@ -49,7 +49,7 @@ function GetPostDetails() {
 
         {post?.images?.map((image, index: number) => (
           <div key={index} className="col-4 dropIn">
-            <img src={image} alt="" className="postImages" />
+            <img src={image} alt={post?.name} className="postImages" />
           </div>
         ))}
         <div className="card postCardContainer">

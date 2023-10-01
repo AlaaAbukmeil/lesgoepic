@@ -21,7 +21,7 @@ function GetAboutUs() {
           <img
             src="/photos/logo.png"
             className="header-logo about-us-logo"
-            alt="logo"
+            alt="lesgoepic logo"
           />
         </center>
 

@@ -138,6 +138,7 @@ a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
 }
 
 .new_footer_top .f-title {
+  /* font-family: 'Libre Baskerville', serif; */
   margin-top: 30px;
   color: #263b5e;
 }

@@ -34,14 +34,16 @@ export function downloadReciept(eventName: string, response: any) {
     "timeslot",
     "userEventId",
     "eventDate",
-    "submissionTime"
+    "submissionTime",
   ];
   let responseKeys = Object.keys(response);
-  responseKeys = responseKeys.filter(element => !commonKeys.includes(element));
+  responseKeys = responseKeys.filter(
+    (element) => !commonKeys.includes(element)
+  );
 
   const doc = new jsPDF();
-  doc.setFontSize(20);
-  doc.text(`${eventName}`, 55, 30);
+  doc.setFontSize(15);
+  doc.text(`${eventName}`, 50, 30);
   doc.addImage(logo, "JPEG", 15, 15, 25, 25);
   let height = 60;
   doc.setFontSize(15);
@@ -71,12 +73,20 @@ export function downloadReciept(eventName: string, response: any) {
   height += 15;
   for (let index = 0; index < responseKeys.length; index++) {
     const element = responseKeys[index];
-    doc.text(
-      `${element}: ${response[element]}`,
-      15,
-      height
-    );
+
+    let line = 100;
+    let elementLength = element.length;
+    doc.text(`${element}:`, 15, height);
     height += 15;
+
+    let dummy = response[element];
+    let chunkSize = 50;
+
+    for (let i = 0; i < dummy.length; i += line) {
+      let chunk = dummy.slice(i, i + line);
+      doc.text(`${chunk}`, 15, height);
+      height += 15;
+    }
   }
   doc.text(
     `Submission Time: ${formatTimestamp(response.submissionTime)}`,

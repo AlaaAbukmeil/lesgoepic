@@ -43,7 +43,9 @@
   width: auto;
   border-radius: 100%
 }
-
+.fa-user{
+  margin-right: 15px
+}
 .animate {
   animation-duration: 0.3s;
   -webkit-animation-duration: 0.3s;

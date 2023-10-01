@@ -1,15 +1,19 @@
+if (!localStorage.getItem("language")) {
+  localStorage.setItem("language", "en");
+}
+
 function navbarLoggedIn() {
-  const langauge = localStorage.getItem("language")
+  const langauge = localStorage.getItem("language");
   return (
     <div
       className="dropdown-menu dropdown-menu-end animate slideIn"
       aria-labelledby="navbarDropdown"
     >
       <a className="dropdown-item" href="/my-events">
-        {langauge == "en" ?`My Events`: "我的活動"}
+        {langauge == "en" ? `My Events` : "我的活動"}
       </a>
       <a className="dropdown-item" href="/settings">
-        {langauge == "en" ?"Settings": "設定"}
+        {langauge == "en" ? "Settings" : "設定"}
       </a>
       <hr className="dropdown-divider" />
       <form action="/logOut" method="post">
@@ -18,21 +22,21 @@ function navbarLoggedIn() {
           type="button"
           onClick={handleLogOut}
         >
-          {langauge == "en"? "Log Out": "設定"}
+          {langauge == "en" ? "Log Out" : "設定"}
         </button>
       </form>
     </div>
   );
 }
 function navbarLoggedOut() {
-  const langauge = localStorage.getItem("language")
+  const langauge = localStorage.getItem("language");
   return (
     <div
       className="dropdown-menu dropdown-menu-end animate slideIn"
       aria-labelledby="navbarDropdown"
     >
       <a className="dropdown-item" href="/auth">
-        {langauge == "en" ? `Sign Up/Login`: "註冊/登入"}
+        {langauge == "en" ? `Sign Up/Login` : "註冊/登入"}
       </a>
     </div>
   );
@@ -74,7 +78,11 @@ function NavBar() {
       <nav className="navbar navbar-expand-lg  navbar-custom">
         <div className="container-fluid">
           <a href="/">
-            <img src="/photos/logo.png" className="header-logo" alt="logo" />
+            <img
+              src="/photos/logo.png"
+              className="header-logo"
+              alt="logo"
+            />
           </a>
           <button
             className="navbar-toggler"
@@ -98,7 +106,7 @@ function NavBar() {
                   <img
                     src="https://storage.googleapis.com/lesgoepic.appspot.com/photosInWebsite/language.png"
                     className="languageSwitch"
-                    alt=""
+                    alt="language toggler"
                   />
                 </a>
               </li>
@@ -136,7 +144,6 @@ function NavBar() {
                   href="/about-us"
                 >
                   {language == "en" ? "About Us" : "關於我們"}
-                  
                 </a>
               </li>
               <li className="nav-item dropdown">
@@ -155,7 +162,10 @@ function NavBar() {
                       <i className="fa-solid fa-caret-down fa-beat"></i>
                     </div>
                   ) : (
-                    <i className="fa-solid fa-user"></i>
+                    <div>
+                      <i className="fa-solid fa-user"></i>
+                      <i className="fa-solid fa-caret-down fa-beat"></i>
+                    </div>
                   )}
                 </a>
                 {/* <!-- Here's the magic. Add the .animate and .slideIn classes to your .dropdown-menu and you're all set! --> */}

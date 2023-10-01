@@ -23,6 +23,9 @@ function getCaptionIndex(caption: string) {
   return index
 }
 
+function handleBlogPost(event: any, url: any): any {
+  window.location.href = url;
+}
 function GetBlog() {
   const language = localStorage.getItem("language")
   let [posts, setPosts] = useState<postInfo[]>();
@@ -61,9 +64,14 @@ function GetBlog() {
         let captionIndex = getCaptionIndex(post.caption)
         let caption = post.caption.slice(0, captionIndex)
         return (
-          <div key={index} className="row postsCard dropIn">
+          <div key={index} className="row postsCard dropIn" onClick={(event) =>
+            handleBlogPost(
+              event,
+              "/post/:" + post["_id"]
+            )
+          }>
             <div className="col-lg-4 col-xs-12 postsContainer">
-              <img src={post.coverImage} className="postImage" alt="..." />
+              <img src={post.coverImage} className="postImage" alt={post.name} />
             </div>
             <div className="col postsContainer postText">
               <h6 className="date descriptionAlbums">{post.date}</h6>
