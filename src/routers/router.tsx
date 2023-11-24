@@ -1,7 +1,7 @@
 import {
   createBrowserRouter,
 } from "react-router-dom";
-import GetEvents from "../components/events/upcomingEvents";
+import Dashboard from "../components/dashboard/dashboard";
 import GetEventDetails from "../components/events/getEventDetails";
 import ErrorPage from "../components/errorPage";
 import GetAlbums from "../components/albums/albums";
@@ -9,11 +9,21 @@ import GetBlog from "../components/blog/blog";
 import GetPostDetails from "../components/blog/getPostDetails";
 import GetAboutUs from "../components/aboutUs/aboutUs";
 import GetTermsAndConditions from "../components/terms&Conditions/termsAndConditions";
-import SignUpLogIn from "../components/auth/signIn";
+import SignUpLogIn from "../components/auth/auth";
+import GetEvents from "../components/events/upcomingEvents";
+import UpdateUser from "../components/auth/updateUser";
+import FeedbackForm from "../components/common/feedbackForm";
+import DeleteUser from "../components/auth/deleteUser";
+import MyEvents from "../components/customer/myEvents";
 
 const router = createBrowserRouter([
   {
     path: "/",
+    element: <Dashboard />,
+    errorElement: <ErrorPage />
+  },
+  {
+    path: "/upcoming-events",
     element: <GetEvents />,
     errorElement: <ErrorPage />
   },
@@ -48,8 +58,29 @@ const router = createBrowserRouter([
     errorElement : <ErrorPage />
   },
   {
-    path: "/myAccount",
+    path: "/auth",
     element: <SignUpLogIn />,
+    errorElement : <ErrorPage />
+  }
+  ,
+  {
+    path: "/settings",
+    element: <UpdateUser />,
+    errorElement : <ErrorPage />
+  },
+  {
+    path: "/feedback-form",
+    element: <FeedbackForm />,
+    errorElement : <ErrorPage />
+  },
+  {
+    path: "/delete-user",
+    element: <DeleteUser />,
+    errorElement : <ErrorPage />
+  },
+  {
+    path: "/my-events",
+    element: <MyEvents />,
     errorElement : <ErrorPage />
   }
 ]);

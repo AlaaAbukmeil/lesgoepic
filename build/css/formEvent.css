@@ -1,0 +1,162 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Roboto+Slab&display=swap');
+
+.card-form {
+  padding: 10px;
+  background-color: #EBDEF0;
+  border-radius: 12px;
+  width: 700px !important;
+  margin: auto;
+}
+
+.second-step {
+  display: none;
+}
+
+.cardFormRegistration {
+  padding: 10px;
+  background-color: #EBDEF0;
+  border-radius: 12px;
+}
+
+.card-1 {
+  margin: 0px 30px 0px auto;
+}
+
+.card-2 {
+  margin: 0px 15px;
+}
+
+.formTextInput {
+  border-radius: 6px;
+  border: 0px;
+  padding: 5px;
+  width: 90%;
+  font-family: 'Roboto Slab', serif;
+}
+
+.formCardBody {
+  background-color: #EBDEF0;
+}
+
+.formDescription {
+  margin: 5px;
+  text-align: justify;
+  font-weight: 400;
+  font-family: 'Roboto Slab', serif;
+}
+
+.formQuestion {
+  margin: 5px;
+  text-align: justify;
+  font-weight: 600;
+  font-family: 'Roboto Slab', serif;
+}
+#cash{
+  display: none;
+}
+#stripe{
+  display: none;
+}
+
+.submitFormBtn {
+  display: flex;
+  margin: 20px 0 0 auto;
+}
+
+.credit-icon {
+  background-color: #581845;
+  color: white;
+  width: auto
+}
+
+article {
+  /* max-width: 600px; */
+  margin: 1em auto;
+  overflow: hidden;
+  position: relative;
+  min-height: 4em;
+  font-family: 'Roboto Slab', serif;
+  font-size: 600
+}
+
+.example-right {
+  white-space: nowrap;
+  position: absolute;
+  opacity: .4;
+  text-transform: uppercase;
+}
+
+.twoButtons {
+  display: flex;
+}
+
+.registerButton {
+  background-color: #581845;
+  color: white;
+  display: flex;
+  margin-top: 25px
+}
+
+.previousButton {
+  background-color: transparent;
+  color: black;
+  display: flex;
+  margin-left: auto;
+  margin-top: 25px;
+  margin-right: 25px
+}
+
+.example-right {
+  -webkit-animation: urmove 8s linear infinite;
+  /* Safari 4.0 - 8.0 */
+  white-space: nowrap;
+  animation: urmove 8s linear infinite alternate;
+}
+
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes urmove {
+  from {
+    right: 0;
+  }
+
+  to {
+    right: -140px;
+  }
+}
+
+@keyframes urmove {
+  from {
+    right: 0;
+  }
+
+  to {
+    right: -140px;
+  }
+}
+
+#invalid-input {
+  display: none;
+  color: red;
+  text-align: center;
+  font-family: 'Libre Baskerville', serif;
+}
+
+@media only screen and (max-width: 1000px) {
+  .eventCard {
+    margin: auto
+  }
+
+  h1 {
+    font-size: 25px
+  }
+
+  .card-1 {
+    margin: 20px auto;
+    max-width: 90%;
+  }
+
+  .card-2 {
+    max-width: 90%;
+    margin: auto
+  }
+}

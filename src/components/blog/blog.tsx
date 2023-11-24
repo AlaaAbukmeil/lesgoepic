@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import Loader from "../common/loader"
 import SeoHelment from "../common/seoHelment";
 import { seoParams } from "../../models/seoParams";
-import proxyUrl from "../common/proxy";
 
 function getCaptionIndex(caption: string) {
 
@@ -24,9 +23,14 @@ function getCaptionIndex(caption: string) {
   return index
 }
 
+function handleBlogPost(event: any, url: any): any {
+  window.location.href = url;
+}
 function GetBlog() {
+  const language = localStorage.getItem("language")
   let [posts, setPosts] = useState<postInfo[]>();
-  let url: any = proxyUrl + "/blog"
+  let url: any = `https://api.lesgoepic.com/api/web/blog?language=${language}`
+
   useEffect(() => {
     fetch(url)
       .then((res) => {
@@ -41,24 +45,33 @@ function GetBlog() {
   }
 
   let seoObject: seoParams = {
-    title: "Blog",
+    title: language == "en" ? "Blog" : "部落格",
     description: "LesGo Epic's blog",
     keywords: "[lesgo, epic, lesgo epic, blog, post, hong kong, hiking, kayaking, sports]",
+    meta: {
+      name: `description`,
+      content: "Blog",
+    }
   }
   return (
     <div>
       <div className="title">
-        <h1>Blog</h1>
+        <h1>{language == "en" ? "Blog" : "部落格"}</h1>
       </div>
+      <SeoHelment {...seoObject} />
 
       {posts.map((post, index) => {
         let captionIndex = getCaptionIndex(post.caption)
         let caption = post.caption.slice(0, captionIndex)
         return (
-          <div key={index} className="row postsCard dropIn">
-            <SeoHelment {...seoObject} />
+          <div key={index} className="row postsCard dropIn" onClick={(event) =>
+            handleBlogPost(
+              event,
+              "/post/:" + post["_id"]
+            )
+          }>
             <div className="col-lg-4 col-xs-12 postsContainer">
-              <img src={post.coverImage} className="postImage" alt="..." />
+              <img src={post.coverImage} className="postImage" alt={post.name} />
             </div>
             <div className="col postsContainer postText">
               <h6 className="date descriptionAlbums">{post.date}</h6>
@@ -68,7 +81,7 @@ function GetBlog() {
               </h4>
 
               <Link to={"/post/:" + post["_id"]} className="btn signupButton">
-                Read More!
+                {language == "en" ? "Read More!": "閱讀更多！"}
               </Link>
             </div>
           </div>

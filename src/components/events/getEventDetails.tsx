@@ -7,12 +7,12 @@ import Loader from "../common/loader";
 import RegisterationClosed from "./eventRegisterationClosed";
 import SeoHelment from "../common/seoHelment";
 import { seoParams } from "../../models/seoParams";
-import proxyUrl from "../common/proxy";
 
 function GetEventDetails() {
   let [event, setEventDetails] = useState<eventInfo>();
   let params: any = useParams();
-  let url: any = proxyUrl + "/events/" + params.eventId;
+  const language = localStorage.getItem("language")
+  let url: any = `https://api.lesgoepic.com/api/web/events/${params.eventId}?language=${language}`
 
   useEffect(() => {
     fetch(url)
@@ -33,6 +33,10 @@ function GetEventDetails() {
     description:
     event?.description || "Events",
     keywords: "[event, lesgo epic, hong kong, fun, university, hiking, kayaking ]",
+    meta: {
+      name: `description`,
+      content: event?.name,
+    }
   };
 
   if (event == null) {

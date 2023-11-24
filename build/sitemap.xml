@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://www.lesgoepic.com/</loc>
+    <lastmod>2023-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <!-- Add more URLs here -->
+  <url>
+    <loc>https://www.lesgoepic.com/upcoming-events</loc>
+    <lastmod>2023-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1</priority>
+  </url>
+  <!-- Add more URLs here -->
+  <url>
+    <loc>https://www.lesgoepic.com/blog</loc>
+    <lastmod>2023-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Add more URLs here -->
+  <url>
+    <loc>https://www.lesgoepic.com/albums</loc>
+    <lastmod>2023-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- Add more URLs here -->
+  <url>
+    <loc>https://www.lesgoepic.com/about-us</loc>
+    <lastmod>2023-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+    <!-- Add more URLs here -->
+  <url>
+    <loc>https://www.lesgoepic.com/auth</loc>
+    <lastmod>2023-09-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+</urlset>

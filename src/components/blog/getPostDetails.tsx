@@ -4,12 +4,12 @@ import { postInfo } from "../../models/postInfo";
 import Loader from "../common/loader";
 import SeoHelment from "../common/seoHelment";
 import { seoParams } from "../../models/seoParams";
-import proxyUrl from "../common/proxy";
 
 function GetPostDetails() {
+  const language = localStorage.getItem("language")
   let [post, setPostDetails] = useState<postInfo>();
   let params: any = useParams();
-  let url: any = proxyUrl + "/post/" + params.postId;
+  let url: any = `https://api.lesgoepic.com/api/web/post/${params.postId}?language=${language}`
 
   useEffect(() => {
     fetch(url)
@@ -34,7 +34,11 @@ function GetPostDetails() {
   let seoObject: seoParams = {
     title: post?.name + " Post" || "Post",
     description: caption,
-    keywords: "[lesgo, epic, lesgo epic, blog, post, hong kong, hiking, kayaking, sports]"
+    keywords: "[lesgo, epic, lesgo epic, blog, post, hong kong, hiking, kayaking, sports]",
+    meta: {
+      name: `description`,
+      content: caption,
+    }
   }
 
   return (
@@ -45,7 +49,7 @@ function GetPostDetails() {
 
         {post?.images?.map((image, index: number) => (
           <div key={index} className="col-4 dropIn">
-            <img src={image} alt="" className="postImages" />
+            <img src={image} alt={post?.name} className="postImages" />
           </div>
         ))}
         <div className="card postCardContainer">

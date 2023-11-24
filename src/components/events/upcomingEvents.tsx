@@ -1,15 +1,15 @@
 import { useState, useEffect } from "react";
 import { eventInfo } from "../../models/eventInfo";
 import { Link } from "react-router-dom";
-import GetYouTubeVideo from "./youtubeVideo";
-import GetSchedule from "./schedule";
 import SeoHelment from "../common/seoHelment";
 import { seoParams } from "../../models/seoParams";
-import proxyUrl from "../common/proxy";
+import GetSchedule from "./schedule";
 
 function GetEvents() {
   let [events, setEvents] = useState<eventInfo[]>([]);
-  let url = proxyUrl + "/events"
+  const language = localStorage.getItem("language");
+  let url = `https://api.lesgoepic.com/api/web/events?language=${language}`;
+
   useEffect(() => {
     fetch(url)
       .then((res) => {
@@ -19,45 +19,77 @@ function GetEvents() {
         setEvents(data.events);
       });
   }, []);
-  
+
   let seoObject: seoParams = {
-    title: "Upcoming Events",
-    description: "LesGo Epic's upcoming events!",
+    title: language == "en" ? "Upcoming Events" : "活動預告",
+    description: "LesGo Epic's upcoming events",
     keywords: "[events, lesgo, epic, lesgo epic, letsgo epic]",
+    meta: {
+      name: `description`,
+      content: "upcoming events",
+    },
+  };
 
+  if (events.length == 0) {
+    return (
+      <div>
+        <SeoHelment {...seoObject} />
+        <GetSchedule />
+      </div>
+    );
   }
-
+  function handleUpcomingEventsRedirect(event: any, url: any): any {
+    window.location.href = url;
+  }
   return (
     <div>
       <SeoHelment {...seoObject} />
       <div className="title">
-        <h1>Upcoming Events</h1>
+        <h1>{language == "en" ? "Upcoming Events" : "活動預告"}</h1>
       </div>
       <div className="events row">
-        {events.map((event: eventInfo, index: number) => (
+        {events.map((upcoming: eventInfo, index: number) => (
           <div
             key={index}
             className="col-lg-4 col-md-6 col-10 eventCard dropIn"
+            onClick={(event) =>
+              handleUpcomingEventsRedirect(
+                event,
+                "/events/:" + upcoming["_id"] || ""
+              )
+            }
           >
             <div className="card">
-              <img src={event.image} className="card-img-top" alt="..." />
+              <img src={upcoming.image} className="card-img-top" alt={upcoming.name} />
               <div className="card-body">
-                <h4 className="date">📅 {event.date}</h4>
-                <h4 className="name">📍 {event.name}</h4>
-                <h4 className="price">💸 {event.cost}</h4>
-                <h4 className="name">🌟 {event.shortDescription}</h4>
+                <h4 className="date">📅 {upcoming.date}</h4>
+                <h4 className="name">📍 {upcoming.name}</h4>
+                <h4 className="price">💸 {upcoming.cost} HKD</h4>
+                <h4 className="name">🌟 {upcoming.shortDescription}</h4>
+                <div>
+                  
+                  <h4 className="price">
+                  <b>
+                  
+                    {language == "en" ? "People Joining: "+ upcoming.peopleCount : "參加的人數: " + upcoming.peopleCount +"人"} <br />
+                    </b>
+                    <b>
+                    {language == "en" ? "Last Updated: " + upcoming.lastUpdated : "最後更新: " + upcoming.lastUpdated}
+                    </b>
+                  </h4>
+                  
+                </div>
                 <Link
-                  to={"events/:" + event["_id"]}
+                  to={"/events/:" + upcoming["_id"]}
                   className="btn signupButton"
                 >
-                  Sign up
+                  {upcoming.status === "lesgo" ? "Sign up": upcoming.status}
                 </Link>
               </div>
             </div>
           </div>
         ))}
       </div>
-      <GetYouTubeVideo />
       <GetSchedule />
     </div>
   );

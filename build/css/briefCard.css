@@ -1,0 +1,36 @@
+
+
+
+
+.brief-container {
+    border-radius: 12px;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 50px;
+    align-items: center;
+    cursor: pointer;
+}
+video{
+    border-radius: 12px;
+}
+.background-img{
+    height:auto;
+    width: 100%
+    
+
+}
+.brief-video{
+    border-radius: 25px;
+    height: 500px;
+    margin: auto;
+    width: auto;
+}
+
+
+@media only screen and (max-width: 800px) {
+
+    .brief-container {
+        margin-bottom: 50px;
+    }
+    
+}

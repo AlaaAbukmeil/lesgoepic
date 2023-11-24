@@ -1,7 +1,9 @@
 export class eventInfo {
     constructor(
         public _id: string,
-<<<<<<< HEAD
+
+        public name: string,
+
         public name: string | null,
         public location: string | null,
         public date: string | null,
@@ -16,21 +18,18 @@ export class eventInfo {
         public timeslots: string | null,
         public googleMaps: string | null,
         public order: string | null
-=======
+
         public name: string | undefined,
-        public location: string | undefined,
-        public date: string | undefined,
-        public cost: string | undefined,
-        public image: string | undefined,
-        public display: string | undefined,
-        public shortDescription: string | undefined,
-        public description: string | undefined,
-        public questions: string,
-        public notes: string | undefined,
-        public stripe: string | undefined,
-        public timeslots: string,
-        public googleMaps: string | undefined,
+
+
+        public order: string | undefined,
+        public status: string | undefined,
+        public peopleCount : string,
+        public lastUpdated: string,
+        ) { }
+
         public order: string | undefined
->>>>>>> master
+
     ) { }
+
 }

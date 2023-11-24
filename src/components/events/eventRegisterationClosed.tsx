@@ -1,4 +1,4 @@
-import GetYouTubeVideo from "./youtubeVideo";
+import GetYouTubeVideo from "../dashboard/youtubeVideo";
 
 function RegisterationClosed() {
   return (
